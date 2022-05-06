@@ -7,13 +7,17 @@ const uniqueValidator = require("mongoose-unique-validator");
 //https://www.npmjs.com/package/mongoose-unique-validator unique 속성 적용
 
 const postSchema = mongoose.Schema({
+  index: {
+    type: Number,
+    required:true,
+  },
   name: {
     type: String,
     required: true,
   },
-  category:{
+  category: {
     type: String,
-    default: "Work out"  
+    default: "Work out",
   },
   title: {
     type: String,
@@ -24,9 +28,9 @@ const postSchema = mongoose.Schema({
     required: true,
   },
   date: {
-    type:Date,
-    default: ()=>Date.now()
-},
+    type: Date,
+    default: () => Date.now(),
+  },
 });
 
 const Post = mongoose.model("Post", postSchema);
