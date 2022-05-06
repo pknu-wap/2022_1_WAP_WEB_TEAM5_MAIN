@@ -9,6 +9,7 @@ const { Post } = require("./models/Post");
 const { auth } = require("./middleware/auth");
 const cookieParser = require("cookie-parser");
 const { Index } = require("./models/PostIndex");
+const { Comment } = require("./models/Comment");
 //const userRouter = require("./routers/user");
 const router = express.Router();
 //app.set('view engine', 'ejs');
@@ -17,6 +18,55 @@ app.use(bodyparser.urlencoded({ extended: true }));
 app.use(bodyparser.json());
 app.use(cookieParser()); //요청된 쿠키를 쉽게 추출할 수 있도록 도와주는 미들웨어, express 의 req 객체에 cookies 속성이 부여된다.
 
+app.get("/api/users/userlist", (req,res) => {
+  let userList = [];
+  User.find({}, (err, userList) => {
+    if(err){return res.json({message: "유저리스트를 불러오는 과정에서 문제가 발생했습니다."})}
+    userList = userList.filter(value => value.token.length > 0);
+    return res.json({
+      activeUserList: userList
+    })
+  })
+  
+})
+
+//////////////////////////////////////////////////
+app.post("/api/post/comment", auth, (req, res) => {
+  console.log(req.body);
+
+  const comment = new Comment({
+    index: req.body.id,
+    name: req.user.name,
+    comment: req.body.comment,
+  });
+
+  comment.save((err, commentInfo) => {
+    if (err) {
+      return res.json({ commentSuccess: false, err });
+    } else {
+      console.log(`comment saved, commentInfo => ${commentInfo}`);
+      return res.status(200).json({ commentSuccess: true });
+    }
+  });
+});
+
+app.post("/api/post/commentlist", (req, res) => {
+  //console.log(req.body.id);
+  Comment.find({index: req.body.id}, (err, commentList) => {
+   console.log(`Comment.find commentList => ${commentList}`);
+    if (!commentList) {
+      return res.json({
+        message: "댓글을 불러올 수 없습니다.",
+      });
+    } else {
+      let commentListArray = commentList;
+      res.json({
+        commentList: commentListArray,
+      });
+    }
+  });
+});
+////////////////////////////////////////////////////////
 app.post("/api/post/post", auth, (req, res) => {
   Index.find(
     ({},
@@ -75,7 +125,7 @@ app.get("/api/post/postlist", (req, res) => {
   });
 });
 
-////User 관련 (로그인, 로그아웃, 회원가입, 권한확인)
+////////////////////////////////////////////////////////////
 app.post("/api/users/register", (req, res) => {
   const user = new User(req.body);
   console.log(`새로 생성된 new User(req.body) = ${user}`);
@@ -160,7 +210,7 @@ mongoose
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
-
+///////////////////////////////////////////////////////////////
 /*
 app.get('/api/users/auth', auth, (req, res) => {
     res.status(200).json({
