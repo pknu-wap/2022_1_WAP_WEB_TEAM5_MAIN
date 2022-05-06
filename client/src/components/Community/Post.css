@@ -1,0 +1,16 @@
+.post{
+    background-color: white;
+    margin: 20px;
+    border-radius: 10px;
+    display: flex;
+    padding:7px;
+}
+
+.post .postName{
+    margin-left: 15px;
+    width:20%
+}
+.post .postTitle{
+    margin-left:15px;
+    text-decoration: none;
+}

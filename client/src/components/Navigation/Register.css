@@ -1,0 +1,26 @@
+.registerForm{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left:27%;
+    margin-right:27%;
+}
+.registerForm input{
+    height: 30px;
+    margin-bottom:15px;
+    margin-top:5px;
+}
+
+.registerForm select{
+    height: 37px;
+    margin-bottom:15px;
+    margin-top:5px;
+}
+.registerForm label{
+    font-weight: 600;
+}
+.registerForm button{
+    margin-top:15px;
+    height: 30px;
+    font-weight: 600;
+}

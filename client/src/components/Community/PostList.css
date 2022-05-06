@@ -1,0 +1,17 @@
+.postList {
+    margin:auto;
+    margin-top: 70px;
+    color:black;
+    width: 60%;
+    height: 400px;
+    background-color: lightgray;
+    display:flex;
+    flex-direction: column;
+    padding:15px;
+    border-radius: 5px;
+}
+
+.postList .listTitle{
+    font-size: 30px;
+    font-weight: 500;
+}

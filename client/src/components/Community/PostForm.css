@@ -1,0 +1,32 @@
+.postForm{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left:27%;
+    margin-right:27%;
+}
+.postForm input{
+    height: 30px;
+    margin-bottom:15px;
+    margin-top:5px;
+}
+
+.postForm select{
+    height: 37px;
+    margin-bottom:15px;
+    margin-top:5px;
+}
+.postForm label{
+    font-weight: 600;
+}
+.postForm button{
+    margin-top:15px;
+    height: 30px;
+    font-weight: 600;
+}
+
+.postForm textarea{
+    height: 250px;
+    margin-top:5px;
+    margin-bottom:10px;
+}
