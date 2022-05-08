@@ -1,8 +1,8 @@
-.postList {
+.postPage {
     margin:auto;
     margin-top: 70px;
     color:black;
-    width: 60%;
+    width: 65%;
     height: 400px;
     background-color: lightgray;
     display:flex;
@@ -11,7 +11,17 @@
     border-radius: 5px;
 }
 
-.postList .listTitle{
+.postPage .listTitle{
     font-size: 30px;
     font-weight: 500;
+}
+
+.postPage .category{
+    width:80px;
+    margin-left:20px;
+    border-style: none;
+}
+
+.postPage .postList{
+    overflow-y: scroll;
 }

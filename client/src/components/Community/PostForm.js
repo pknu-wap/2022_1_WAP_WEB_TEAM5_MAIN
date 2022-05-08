@@ -9,7 +9,7 @@ function Post() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [title, setTItle] = useState("");
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState("etc");
   const [textArea, setTextArea] = useState("");
 
   const onTitleHandler = (e) => {
@@ -51,10 +51,10 @@ function Post() {
       <form className="postForm" onSubmit={onSubmitHandler}>
         <label>Category</label>
         <select onChange={onCategoryHandler}>
+          <option value="etc">Etc</option>
           <option value="work out">Work out</option>
           <option value="jogging">Jogging</option>
           <option value="study">Study</option>
-          <option value="etc">Etc</option>
         </select>
         <label>Title</label>
         <input type="text" onChange={onTitleHandler} />

@@ -17,7 +17,8 @@ const postSchema = mongoose.Schema({
   },
   category: {
     type: String,
-    default: "Work out",
+    default: "etc",
+    required:true,
   },
   title: {
     type: String,

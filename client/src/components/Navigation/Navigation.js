@@ -29,6 +29,7 @@ function Navigation({ isAuth }) {
           Logout
         </a>
         <Link to="/post">Post</Link>
+        <Link to="/mypage">MyPage</Link>
       </div>
     );
   }

@@ -6,6 +6,7 @@ function Post({ id, name, category, title, textArea, date }) {
   //console.log(post);
   return (
     <div className="post">
+      <span className="postCategory">{category}</span>
       <span className="postName">Name: {name}</span>
       <Link
         className="postTitle "

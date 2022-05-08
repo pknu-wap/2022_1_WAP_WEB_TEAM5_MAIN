@@ -1,0 +1,100 @@
+import axios from "axios";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import "./MyPage.css";
+import { Link } from "react-router-dom";
+
+//순서
+//db에 내 name의 mypage 정보 있으면 불러오고
+//아니면 새로 만들라고 input란 만든다.
+
+function MyPage() {
+  const navigate = useNavigate();
+
+  const [myPage, setMyPage] = useState([]);
+  const [hobby, setHobby] = useState("");
+  const [textArea, setTextArea] = useState("");
+
+  useEffect(() => {
+    async function fetchData() {
+      // You can await here
+      const request = await axios
+        .get("/api/users/mypage")
+        .then((res) => res.data.mypage);
+      //마이페이지 작성 안됬으면 빈배열을 가져옴
+      //마이페이지 작성 됬으면 배열의 첫번째 원소임
+
+      await setMyPage(request);
+    }
+    fetchData();
+  }, []);
+
+  const onHobbyHandler = (e) => {
+    e.preventDefault();
+    setHobby(e.target.value);
+  };
+  const onTextAreaHandler = (e) => {
+    e.preventDefault();
+    setTextArea(e.target.value);
+  };
+  const onSubmitHandler = (e) => {
+    e.preventDefault();
+    let body = {
+      hobby,
+      textArea,
+    };
+    axios.post("/api/users/mypage", body).then((res) => {
+      console.log(res);
+      if (res.data.myPageSuccess) {
+        alert("마이페이지가 작성되었습니다.");
+        navigate("/");
+        window.location.reload();
+      } else {
+        alert("마이페이지 작성에 실패했습니다.");
+      }
+    });
+  };
+
+  return (
+    <div>
+      {myPage.length ? (
+        <div className="myPage">
+          <div className="myPagePage">
+            <label>Name</label>
+            <div>{myPage[0].name}</div>
+            <label>Age</label>
+            <div>{myPage[0].age}</div>
+            <label>Gender</label>
+            <div>{myPage[0].gender}</div>
+            <label>Hobby</label>
+            <div>{myPage[0].hobby}</div>
+            <label>Comment</label>
+            <div>{myPage[0].textArea}</div>
+            <button>
+              <Link to="/mypage/modify" state={{
+                  name: myPage[0].name,
+                  age: myPage[0].age,
+                  gender: myPage[0].gender,
+                  hobby: myPage[0].hobby,
+                  textArea:myPage[0].textArea
+              }}>MODIFY</Link>
+            </button>
+          </div>
+        </div>
+      ) : (
+        <div className="myPage">
+          <div>아직 자기소개가 등록되지 않았습니다.</div>
+          <form className="infoForm" onSubmit={onSubmitHandler}>
+            <h2>Title</h2>
+            <input type="text" onChange={onHobbyHandler} />
+            <h2>TextArea</h2>
+            <textarea type="text" onChange={onTextAreaHandler} />
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default MyPage;

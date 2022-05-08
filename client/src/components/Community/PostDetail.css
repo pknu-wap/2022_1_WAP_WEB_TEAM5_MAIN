@@ -3,11 +3,12 @@
     margin-top: 30px;
     color:black;
     width: 500px;
-    height: 500px;
+    height: 600px;
     background-color: lightgray;
     display:flex;
     flex-direction: column;
     padding:15px;
+    border-radius: 5px;
 }
 
 .postDetail .commentTitle{
@@ -19,4 +20,14 @@
 .postDetail .postInfo div{
     font-size: 20px;
     margin-top: 10px;
+}
+
+.postDetail input{
+    border-style: none;
+    height: 20px;
+}
+.postDetail button{
+    border-style: none;
+    cursor: pointer;
+    height: 23px;
 }

@@ -1,0 +1,33 @@
+.myPage{
+    margin:auto;
+    margin-top: 30px;
+    color:black;
+    width: 500px;
+    height: 500px;
+    background-color: lightgray;
+    display:flex;
+    flex-direction: column;
+    padding:15px;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+.myPagePage label{
+    font-weight: 600;
+    font-size: 30px;
+}
+
+.myPagePage button{
+    width:80px;
+}
+.myPagePage button a{
+    color:black;
+    text-decoration: none;
+}
+
+.infoForm{
+    display: flex;
+    flex-direction: column;
+    width:70%;
+    margin: auto;
+}

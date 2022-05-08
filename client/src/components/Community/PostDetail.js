@@ -12,6 +12,7 @@ function Detail() {
     <div className="postDetail">
       <div className="postInfo">
         <h1>{state.title}</h1>
+        <div>Category: {state.category}</div>
         <div>Name: {state.name}</div>
         <div>Content: {state.textArea}</div>
         <div>Date: {state.date}</div>

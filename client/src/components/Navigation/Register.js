@@ -72,6 +72,7 @@ ex) 이메일 또는 닉네임 중복, 비밀번호 최소 5자 이상, 닉네�
     <div>
       <form className="registerForm" onSubmit={onSubmitHandler}>
         <h1>Register</h1>
+        <div>회원가입 후 name 과  gender 는 수정이 불가합니다.</div>
         <label>Gender</label>
         <select onChange={onGenderHandler}>
           <option value="male">male</option>

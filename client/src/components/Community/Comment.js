@@ -65,7 +65,7 @@ function Comment({ id }) {
       </div>
       <form onSubmit={onSubmitHandler} className="commentForm">
         <input type="text" onChange={onCommentHandler} />
-        <button type="submit">Submit</button>
+        <button type="submit">SUBMIT</button>
       </form>
     </div>
   );
