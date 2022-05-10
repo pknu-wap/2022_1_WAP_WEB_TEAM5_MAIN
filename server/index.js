@@ -37,8 +37,13 @@ app.post("/api/users/mypage/modify", auth, (req, res) => {
       } else {
         User.findOneAndUpdate(
           { name: req.user.name },
-          { age: req.body.age },(err,userInfo) => {
-            if(err){console.log(`mypage 정보 수정 중 에러발생`)}else{console.log(`mypage 정보 수정 완료 userInfo => ${userInfo}`)}
+          { age: req.body.age },
+          (err, userInfo) => {
+            if (err) {
+              console.log(`mypage 정보 수정 중 에러발생`);
+            } else {
+              console.log(`mypage 정보 수정 완료 userInfo => ${userInfo}`);
+            }
           }
         );
         console.log(`mypage 수정 완료  mypage => ${mypage}`);
@@ -49,6 +54,21 @@ app.post("/api/users/mypage/modify", auth, (req, res) => {
       }
     }
   );
+});
+
+app.post("/api/users/mypage/otherpage", (req, res) => {
+  MyPage.find({ name: req.body.name }, (err, otherpage) => {
+    if (err) {
+      return res.json({
+        message: "상대방의페이지를 불러오는 과정에서 문제가 발생했습니다.",
+      });
+    } else {
+      console.log(`otherpage 찾음 => ${otherpage}`);
+      return res.json({
+        otherpage: otherpage,
+      });
+    }
+  });
 });
 
 app.get("/api/users/mypage", auth, (req, res) => {
@@ -289,6 +309,7 @@ app.get("/api/users/auth", auth, (req, res) => {
     isAuth: true,
     email: req.user.email,
     name: req.user.name,
+    age: req.user.age,
   });
 });
 

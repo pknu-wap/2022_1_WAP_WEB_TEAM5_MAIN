@@ -7,13 +7,20 @@ function Post({ id, name, category, title, textArea, date }) {
   return (
     <div className="post">
       <span className="postCategory">{category}</span>
-      <span className="postName">Name: {name}</span>
+      
+      <Link
+        className="postName"
+        to={{ pathname: `/mypage/${name}` }}
+        state={{ name }}
+      >
+        name: {name}
+      </Link>
       <Link
         className="postTitle "
         to={{ pathname: `/post/${id}` }}
         state={{ id, name, category, title, textArea, date }}
       >
-        Title: {title}
+        title: {title}
       </Link>
     </div>
   );
