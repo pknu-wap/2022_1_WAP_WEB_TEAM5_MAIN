@@ -36,6 +36,7 @@ function Comment({ id }) {
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
+    if(!comment){alert("댓글을 입력하세요."); return;};
     let body = {
       comment,
       id, //해당 게시글의 id(index)

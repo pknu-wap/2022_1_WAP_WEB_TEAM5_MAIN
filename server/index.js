@@ -157,6 +157,21 @@ app.post("/api/post/commentlist", (req, res) => {
   });
 });
 ////////////////////////////////////////////////////////
+app.post("/api/post/delete", (req, res) => {
+  //게시글에서 isMyPage 로 권한 확인했음
+  Post.findOneAndDelete({ index: req.body.id }, (err, postInfo) => {
+    if (err) {
+      return res.json({ postDeleteSuccess: false });
+    }
+    //해당 게시글의 댓글도 삭제한다
+    Comment.findOneAndDelete({id: req.body.id}, (err, commentList)=> {
+      if(err){return res.json({message: "해당 게시글의 댓글을 작성하는 과정에서 에러가 발생했습니다."})}
+    })
+    //댓글도 정상적으로 삭제가 됐을때
+    return res.json({ postDeleteSuccess: true });
+  });
+});
+
 app.post("/api/post/modify", (req, res) => {
   //이미 modi 페이지로 들어올때 권한 확인했음
   Post.findOneAndUpdate(

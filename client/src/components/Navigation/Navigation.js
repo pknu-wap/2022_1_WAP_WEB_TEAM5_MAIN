@@ -1,11 +1,19 @@
 import axios from "axios";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { pathToFileURL } from "url";
 import "./Navigation.css";
 
 function Navigation({ isAuth }) {
   const navigate = useNavigate();
+
+  const [time, setTime] = useState(new Date());
+  useEffect(() => {
+    setInterval(() => {
+      setTime(new Date());
+    }, 1000);
+  }, []);
 
   const onLogoutHandler = async (e) => {
     e.preventDefault();
@@ -13,7 +21,7 @@ function Navigation({ isAuth }) {
     axios.get("/api/users/logout").then((res) => {
       if (res.data.logoutSuccess) {
         alert("로그아웃 되었습니다.");
-        navigate("/")
+        navigate("/");
         window.location.reload();
       } else {
         alert("로그인 상태가 아닙니다.");
@@ -30,6 +38,9 @@ function Navigation({ isAuth }) {
         </a>
         <Link to="/post">Post</Link>
         <Link to="/mypage">MyPage</Link>
+        <span>
+          {time.getMonth() + 1} / {time.getDate()} 일 {time.getMinutes()} : {time.getSeconds()}
+        </span>
       </div>
     );
   }

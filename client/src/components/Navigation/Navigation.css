@@ -1,8 +1,18 @@
 .navigation{
     display:flex;
     padding:10px;
+    align-items: center;
+    margin-left:3%;
 }
 .navigation a{
+    color: black;
+    text-decoration: none;
+    padding:20px;
+}
+
+.navigation span{
+    font-size: 20px;
+    font-weight: 500;
     color: black;
     text-decoration: none;
     padding:20px;

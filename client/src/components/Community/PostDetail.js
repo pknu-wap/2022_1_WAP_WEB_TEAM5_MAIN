@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
@@ -7,6 +8,7 @@ import Comment from "./Comment";
 
 function Detail() {
   const location = useLocation();
+  const navigate = useNavigate();
   const state = location.state;
   const [isMyPost, setIsMyPost] = useState(false);
   console.log(state);
@@ -24,6 +26,21 @@ function Detail() {
     }
     fetchData();
   }, []);
+
+  const onDeleteHandler = async (e) => {
+    e.preventDefault();
+    let check = window.confirm("게시글을 삭제하시겠습니까?");
+    if (check) {
+      await axios.post("/api/post/delete", { id: state.id }).then((res) => {
+        if (res.data.postDeleteSuccess) {
+          alert("게시글이 삭제되었습니다.");
+          navigate("/");
+        } else {
+          alert("게시글 삭제에 실패했습니다. 관리자에게 문의하세요.");
+        }
+      });
+    }else{alert("게시글 삭제가 취소되었습니다.")}
+  };
 
   return (
     <div className="postDetail">
@@ -56,6 +73,7 @@ function Detail() {
               MODIFY
             </Link>
           </button>
+          <button onClick={onDeleteHandler}>DELETE</button>
         </div>
       )}
     </div>
