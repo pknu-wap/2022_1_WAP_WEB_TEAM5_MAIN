@@ -51,6 +51,7 @@ function PostList() {
               name={post.name}
               category={post.category}
               date={post.date}
+              modiDate={post.modiDate}
             ></Post>
           ))}
       </div>

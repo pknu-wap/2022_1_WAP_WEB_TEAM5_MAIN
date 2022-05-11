@@ -13,6 +13,7 @@ import Detail from "./components/Community/PostDetail";
 import MyPage from "./components/Community/MyPage"; 
 import MyPageModi from "./components/Community/MyPageModi";
 import OtherPage from "./components/Community/OtherPage";
+import PostDetailModi from "./components/Community/PostDetailModi";
 
 function App() {
   const [isAuth, setIsAuth] = useState(false);
@@ -37,8 +38,9 @@ function App() {
         <Route path="/signup" element={<Register />} />
         <Route path="/post" element={<PostForm />} />
         <Route path="/post/:id" element={<Detail/>}/>
+        <Route path="/post/modify" element={<PostDetailModi/>}/>
         <Route path="/mypage" element={<MyPage/>}/>
-        <Route path="/mypage/:name" element={<OtherPage/>}/>
+        <Route path="/mypage/:name"  element={<OtherPage/>}/>
         <Route path="/mypage/modify" element={<MyPageModi/>}/>
       </Routes>
     </div>

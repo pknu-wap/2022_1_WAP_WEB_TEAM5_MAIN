@@ -25,6 +25,7 @@
 .postDetail input{
     border-style: none;
     height: 20px;
+    margin-bottom: 10px;
 }
 .postDetail button{
     border-style: none;

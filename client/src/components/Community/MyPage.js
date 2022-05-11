@@ -79,7 +79,6 @@ function MyPage() {
             <div>{myPage[0].hobby}</div>
             <label>Comment</label>
             <div>{myPage[0].textArea}</div>
-
             <button>
               <Link
                 to="/mypage/modify"

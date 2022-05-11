@@ -157,6 +157,24 @@ app.post("/api/post/commentlist", (req, res) => {
   });
 });
 ////////////////////////////////////////////////////////
+app.post("/api/post/modify", (req, res) => {
+  //이미 modi 페이지로 들어올때 권한 확인했음
+  Post.findOneAndUpdate(
+    { index: req.body.id, name: req.body.name },
+    {
+      title: req.body.title,
+      textArea: req.body.textArea,
+      modifiedDate: Date.now(),
+    },
+    (err, postInfo) => {
+      if (err) {
+        return res.json({ postDetailModiSuccess: false });
+      }
+      return res.json({ postDetailModiSuccess: true });
+    }
+  );
+});
+
 app.post("/api/post/post", auth, (req, res) => {
   Index.find(
     ({},

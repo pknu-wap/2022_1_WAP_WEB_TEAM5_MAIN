@@ -9,7 +9,7 @@ const uniqueValidator = require("mongoose-unique-validator");
 const postSchema = mongoose.Schema({
   index: {
     type: Number,
-    required:true,
+    required: true,
   },
   name: {
     type: String,
@@ -18,7 +18,7 @@ const postSchema = mongoose.Schema({
   category: {
     type: String,
     default: "etc",
-    required:true,
+    required: true,
   },
   title: {
     type: String,
@@ -29,6 +29,10 @@ const postSchema = mongoose.Schema({
     required: true,
   },
   date: {
+    type: Date,
+    default: () => Date.now(),
+  },
+  modiDate: {
     type: Date,
     default: () => Date.now(),
   },

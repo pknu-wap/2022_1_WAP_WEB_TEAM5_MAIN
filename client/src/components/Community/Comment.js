@@ -21,10 +21,11 @@ function Comment({ id }) {
     fetchData();
   }, []);
 
+  //댓글 정상적으로 담겼는지 확인
   if (commentList) {
-    console.log(commentList);
+    //console.log(commentList);
   } else {
-    console.log("there are no commentList");
+    //console.log("there are no commentList");
   }
 
   const dispatch = useDispatch();
