@@ -1,0 +1,20 @@
+{
+  "name": "dongjeon",
+  "description": "2022 1학기 웹 5팀",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "concurrently \"npm run front --prefix client\" \"npm run backend --prefix server\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/donghyuun/2022_1_WAP_WEB_TEAM5.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/donghyuun/2022_1_WAP_WEB_TEAM5/issues"
+  },
+  "homepage": "https://github.com/donghyuun/2022_1_WAP_WEB_TEAM5#readme"
+}

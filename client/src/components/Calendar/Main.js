@@ -1,10 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useSyncExternalStore } from "react";
 import "./Main.css";
+import InputForm from "./InputForm";
+import axios from "axios";
+
 function Main() {
-  let date = new Date();
-  let dates = [];
+  let datee = new Date();
+  let [date, setDate] = useState(datee);
+  let [dateArray, setDateArray] = useState([]);
   let viewYear = date.getFullYear();
   let viewMonth = date.getMonth();
+
+  const [isAuth, setIsAuth] = useState(false);
 
   //const [viewYear, setViewYear] = useState(date.getFullYear());
   //const [viewMonth, setViewMonth] = useState(date.getMonth());
@@ -14,8 +20,10 @@ function Main() {
     viewYear = date.getFullYear(); //현재 시간 기준 연도
     console.log(`함수 내 viewYear = ${viewYear}`);
     //setViewYear(viewYear);
-    viewMonth = date.getMonth(); //현재 시간 기준 달
-    console.log(`함수 내 viewMonth = ${viewMonth}, 현재 시간 기준 달 = ${viewMonth + 1}`);
+    viewMonth = date.getMonth(); //함수 내 viewMonth
+    console.log(
+      `함수 내 viewMonth = ${viewMonth}, 현재 시간 기준 달 = ${viewMonth + 1}`
+    );
     //setViewMonth(viewMonth);
 
     //현재 시간 기준 페이지에서 위 아래에 보일 저번, 다음 달의 날짜들
@@ -48,26 +56,42 @@ function Main() {
       //ex) TLDay가 화요일(2)이면 수,목,금,토 날짜가 들어간다.
     }
     //세 배열을 prevDates에 합친다.(prev->this->next 순)
-    dates = prevDates.concat(thisDates, nextDates);
+    let dates = prevDates.concat(thisDates, nextDates);
+    setDateArray(dates);
     console.log(`함수 내 dates = ${dates}`);
   };
 
-  renderCalendar();
+  useEffect(() => {
+    async function fetchData() {
+      await axios.get("/api/users/auth").then((res) => {
+        if (res.data.isAuth) {
+          setIsAuth(true);
+          console.log("isAuth is true");
+        } else {
+          console.log("isAuth is false");
+        }
+      });
+    }
+    fetchData();
+
+    renderCalendar();
+  }, []);
 
   const onLastMonthHandler = (e) => {
     e.preventDefault();
     date.setMonth(date.getMonth() - 1);
     console.log(date);
-    renderCalendar();
+    setDate(date);
+    renderCalendar(date);
     console.log("이동완료");
   };
   const onNextMonthHandler = (e) => {
     e.preventDefault();
     date.setMonth(date.getMonth() + 1);
     console.log(date);
-    renderCalendar();
+    setDate(date);
+    renderCalendar(date);
     console.log("이동완료");
-    
   };
 
   return (
@@ -86,6 +110,9 @@ function Main() {
           </button>
         </div>
       </div>
+      <div className="inputForm">
+        {isAuth && <InputForm />}
+      </div>
       <div className="days">
         <div className="day">일</div>
         <div className="day">월</div>
@@ -96,12 +123,11 @@ function Main() {
         <div className="day">토</div>
       </div>
       <div className="dates">
-        {dates &&
-          dates.map((date, index) => {
+        {dateArray &&
+          dateArray.map((date, index) => {
             return <div className="date">{date}</div>;
           })}
       </div>
-      <div>asdf</div>
     </div>
   );
 }

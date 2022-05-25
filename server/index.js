@@ -11,6 +11,7 @@ const cookieParser = require("cookie-parser");
 const { Index } = require("./models/PostIndex");
 const { Comment } = require("./models/Comment");
 const { MyPage } = require("./models/MyPage");
+const { CalPost } = require("./models/CalPost");
 //const userRouter = require("./routers/user");
 const router = express.Router();
 //app.set('view engine', 'ejs');
@@ -19,6 +20,25 @@ app.use(bodyparser.urlencoded({ extended: true }));
 app.use(bodyparser.json());
 app.use(cookieParser()); //요청된 쿠키를 쉽게 추출할 수 있도록 도와주는 미들웨어, express 의 req 객체에 cookies 속성이 부여된다.
 
+app.post("/api/calendar/post", auth, (req, res) => {
+  const Calbody = new CalPost({
+    name: req.user.name,
+    startDate: req.body.date,
+    category: req.body.categorym,
+    title: req.body.title,
+    textArea: req.body.textArea,
+  });
+  console.log(Calbody);
+  Calbody.save((err, postInfo) => {
+    if (err) {
+      return res.json({ calPostSuccess: false, err });
+    } else {
+      console.log(`CalPostInfo => ${postInfo}`);
+      return res.status(200).json({ calPostSuccess: true });
+    }
+  });
+});
+////////////////////////////////////////////////////////////
 app.post("/api/users/mypage/modify", auth, (req, res) => {
   //mypage 수정과 동시에 user 도 수정해야함
   MyPage.findOneAndUpdate(
@@ -164,9 +184,14 @@ app.post("/api/post/delete", (req, res) => {
       return res.json({ postDeleteSuccess: false });
     }
     //해당 게시글의 댓글도 삭제한다
-    Comment.findOneAndDelete({id: req.body.id}, (err, commentList)=> {
-      if(err){return res.json({message: "해당 게시글의 댓글을 작성하는 과정에서 에러가 발생했습니다."})}
-    })
+    Comment.findOneAndDelete({ id: req.body.id }, (err, commentList) => {
+      if (err) {
+        return res.json({
+          message:
+            "해당 게시글의 댓글을 작성하는 과정에서 에러가 발생했습니다.",
+        });
+      }
+    });
     //댓글도 정상적으로 삭제가 됐을때
     return res.json({ postDeleteSuccess: true });
   });
