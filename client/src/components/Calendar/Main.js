@@ -168,7 +168,7 @@ function Main() {
             console.log(posts);
             return (
               <div className="date">
-                <Detail key={index} posts={posts}date={obj.date} />
+                <Detail key={index} posts={posts} date={obj.date} />
               </div>
             );
           })}
