@@ -22,7 +22,7 @@ function InputForm() {
   useEffect(() => {
     setDateInfo({
       year: startDate.getFullYear(),
-      month: startDate.getMonth(),
+      month: (startDate.getMonth() + 1),
       date: startDate.getDate(),
       hour: startDate.getHours(),
       min: startDate.getMinutes(),

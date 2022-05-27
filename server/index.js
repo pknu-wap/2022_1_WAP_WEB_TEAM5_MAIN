@@ -20,6 +20,19 @@ app.use(bodyparser.urlencoded({ extended: true }));
 app.use(bodyparser.json());
 app.use(cookieParser()); //요청된 쿠키를 쉽게 추출할 수 있도록 도와주는 미들웨어, express 의 req 객체에 cookies 속성이 부여된다.
 
+app.get("/api/calendar/post", (req, res) => {
+  CalPost.find({}, (err, postList) => {
+    if (err) {
+      return res.json({
+        message: "포스트리스트를 불러오는 과정에서 문제가 발생했습니다.",
+      });
+    }
+    return res.json({
+      postList: postList
+    });
+  });
+});
+
 app.post("/api/calendar/post", auth, (req, res) => {
   const Calbody = new CalPost({
     name: req.user.name,
