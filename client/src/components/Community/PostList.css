@@ -1,9 +1,8 @@
 .postPage {
-    margin:auto;
     margin-top: 70px;
     color:black;
-    width: 65%;
-    height: 400px;
+    width: 70%;
+    height: 600px;
     background-color: lightgray;
     display:flex;
     flex-direction: column;
@@ -17,6 +16,8 @@
 }
 
 .postPage .category{
+    height: 30px;
+    border-radius: 2px;
     width:80px;
     margin-left:20px;
     border-style: none;

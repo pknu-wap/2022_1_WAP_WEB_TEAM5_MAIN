@@ -1,13 +1,18 @@
 .background{
-    width:300px;
+    width:250px;
     height:300px;
     background: rgba(0, 0, 0, 0.8);
     color:white;
     position: absolute;
     display:flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    top:35%;
+    left:70%;
+    border-radius: 5px;
 }
+
 
 .modalWrapper{
     width: 800px;
@@ -23,10 +28,10 @@
 
 }
 
-p{
+.background p{
     margin-bottom: 1rem;
 }
-button{
+.background button{
     cursor:pointer;
     padding:10px 24px;
     background: #141414;

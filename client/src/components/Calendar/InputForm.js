@@ -6,7 +6,7 @@ import { getDate } from "date-fns";
 import axios from "axios";
 import { Navigate } from "react-router-dom";
 
-function InputForm() {
+function InputForm({ form, setFormHandler }) {
   const [startDate, setStartDate] = useState(new Date());
   const [dateInfo, setDateInfo] = useState({
     year: startDate.getFullYear(),
@@ -22,7 +22,7 @@ function InputForm() {
   useEffect(() => {
     setDateInfo({
       year: startDate.getFullYear(),
-      month: (startDate.getMonth() + 1),
+      month: startDate.getMonth() + 1,
       date: startDate.getDate(),
       hour: startDate.getHours(),
       min: startDate.getMinutes(),
@@ -63,10 +63,10 @@ function InputForm() {
     setTextArea(e.target.value);
   };
   return (
-    <div>
-      <form className="registerForm" onSubmit={onSubmitHandler}>
+    <div className="container">
+      <form className="calPostForm" onSubmit={onSubmitHandler}>
         <label>Date</label>
-        <DatePicker
+        <DatePicker 
           selected={startDate}
           showTimeSelect
           dateFormat="Pp"
@@ -90,6 +90,7 @@ function InputForm() {
         <label>Content</label>
         <textarea type="text" onChange={onTextAreaHandler} />
         <button>SUBMIT</button>
+        <button onClick={()=> setFormHandler(false)}>ClOSE</button>
       </form>
     </div>
   );

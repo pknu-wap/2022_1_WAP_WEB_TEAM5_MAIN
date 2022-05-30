@@ -2,9 +2,9 @@
     box-sizing: border-box;
 }
 .calendar {
-  width: 600px;
-  margin: auto;
+  width: 45%;
 }
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -66,3 +66,21 @@
 .date:nth-child(7n) {
   color: #396EE2;
 }
+
+.inputForm{
+  width:350px;
+  height:400px;
+  background: rgba(0, 0, 0, 0.8);
+  color:white;
+  position: absolute;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttonContainer{
+  display:flex;
+  flex-direction: row-reverse;
+}
+.inputButton{
+border-radius: 5px;}

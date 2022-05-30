@@ -11,6 +11,7 @@ function Detail() {
   const navigate = useNavigate();
   const state = location.state;
   const [isMyPost, setIsMyPost] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(0);
   console.log(state);
 
   useEffect(() => {
@@ -21,6 +22,8 @@ function Detail() {
             `res.data.name = ${res.data.name} state.name = ${state.name}`
           );
           setIsMyPost(true);
+        } else if (res.data.isAdmin) {
+          setIsAdmin(1);
         }
       });
     }
@@ -39,7 +42,9 @@ function Detail() {
           alert("게시글 삭제에 실패했습니다. 관리자에게 문의하세요.");
         }
       });
-    }else{alert("게시글 삭제가 취소되었습니다.")}
+    } else {
+      alert("게시글 삭제가 취소되었습니다.");
+    }
   };
 
   return (
@@ -73,6 +78,11 @@ function Detail() {
               MODIFY
             </Link>
           </button>
+          <button onClick={onDeleteHandler}>DELETE</button>
+        </div>
+      )}
+      {isAdmin && (
+        <div>
           <button onClick={onDeleteHandler}>DELETE</button>
         </div>
       )}

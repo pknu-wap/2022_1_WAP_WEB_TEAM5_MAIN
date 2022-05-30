@@ -1,3 +1,9 @@
-.home {
+.home2 {
     display: flex;
+    width: 45%;
+    justify-content: center;
+}
+.home1{
+    display: flex;
+    justify-content: space-around;
 }

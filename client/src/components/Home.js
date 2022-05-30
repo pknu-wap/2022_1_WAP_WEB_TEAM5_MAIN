@@ -6,8 +6,8 @@ import Main from "./Calendar/Main";
 
 function Home() {
   return (
-    <div>
-      <div className="home">
+    <div className="home1">
+      <div className="home2">
         <ActiveUser />
         <PostList />
       </div>

@@ -11,7 +11,6 @@ function Detail({ posts, date }) {
     console.log(modalState);
   };
 
-  console.log(posts);
   return (
     <div >
       <div className="datedate" onClick={openModal}>{date}</div>

@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { postPost } from "../../_actions/post_action";
@@ -8,6 +8,7 @@ import "./PostForm.css";
 function Post() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [isAdmin, setIsAdmin]= useState(0);
   const [title, setTItle] = useState("");
   const [category, setCategory] = useState("etc");
   const [textArea, setTextArea] = useState("");
@@ -20,6 +21,7 @@ function Post() {
   const onCategoryHandler = (e) => {
     e.preventDefault();
     setCategory(e.target.value);
+    console.log(category);
   };
   const onTextAreaHandler = (e) => {
     e.preventDefault();
@@ -45,13 +47,19 @@ function Post() {
       }
     });
   };
-
+  useEffect(()=>{
+    axios.get("/api/users/auth").then((res) => {
+      if(res.data.isAdmin){
+        setIsAdmin(1);
+      }
+    })
+  })
   return (
     <div>
       <form className="postForm" onSubmit={onSubmitHandler}>
         <label>Category</label>
         <select onChange={onCategoryHandler}>
-          <option value="etc">Etc</option>
+          {isAdmin && <option value="notice">Notice</option>}
           <option value="work out">Work out</option>
           <option value="jogging">Jogging</option>
           <option value="study">Study</option>

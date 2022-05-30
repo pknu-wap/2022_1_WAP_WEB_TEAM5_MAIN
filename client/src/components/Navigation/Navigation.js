@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { pathToFileURL } from "url";
 import "./Navigation.css";
 
-function Navigation({ isAuth }) {
+function Navigation({ isAuth, isAdmin }) {
   const navigate = useNavigate();
 
   const [time, setTime] = useState(new Date());
@@ -36,10 +36,11 @@ function Navigation({ isAuth }) {
         <a href="/api/users/logout" onClick={onLogoutHandler}>
           Logout
         </a>
-        <Link to="/post">Post</Link>
+        <Link to="/post" state={{}}>Post</Link>
         <Link to="/mypage">MyPage</Link>
+        {isAdmin && <Link to="/adminPage">AdminPage</Link>}
         <span>
-          {time.getMonth() + 1} / {time.getDate()} 일 {time.getMinutes()} : {time.getSeconds()}
+          {time.getMonth() + 1} / {time.getDate()} 일 {time.getHours()}시 {time.getMinutes()}분 {time.getSeconds()}초
         </span>
       </div>
     );
@@ -49,6 +50,9 @@ function Navigation({ isAuth }) {
       <Link to="/">Home</Link>
       <Link to="/login">Login</Link>
       <Link to="/signup">SignUp</Link>
+      <span>
+          {time.getMonth() + 1} / {time.getDate()} 일 {time.getHours()}시 {time.getMinutes()}분 {time.getSeconds()}초
+        </span>
     </div>
   );
 }

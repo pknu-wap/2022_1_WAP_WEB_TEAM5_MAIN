@@ -269,7 +269,7 @@ app.post("/api/post/post", auth, (req, res) => {
 });
 
 app.get("/api/post/postlist", (req, res) => {
-  Post.find({}, (err, postList) => {
+  Post.find({category: {$ne: "notice"}}, (err, postList) => {
     console.log(`Post.find postList => ${postList}`);
     if (!postList) {
       return res.json({
@@ -288,7 +288,7 @@ app.get("/api/post/postlist", (req, res) => {
 
 app.post("/api/post/category", (req, res) => {
   if (req.body.category == "all") {
-    Post.find({}, (err, postList) => {
+    Post.find({category: {$ne: "notice"}}, (err, postList) => {
       console.log(`Post.find postList => ${postList}`);
       if (!postList) {
         return res.json({
@@ -320,6 +320,14 @@ app.post("/api/post/category", (req, res) => {
   }
 });
 ////////////////////////////////////////////////////////////
+app.get("/api/users/userlist", (req,res)=>{
+  User.find({category: {$ne: 1}},(err, userList)=> {
+    if(err){
+      return res.json({userListSuccess: false, err})
+    }
+    return res.status(200).json({useListSuccess:true, userList})
+  })
+})
 app.post("/api/users/register", (req, res) => {
   const user = new User(req.body);
   console.log(`새로 생성된 new User(req.body) = ${user}`);
@@ -381,6 +389,7 @@ app.get("/api/users/auth", auth, (req, res) => {
     email: req.user.email,
     name: req.user.name,
     age: req.user.age,
+    role: req.user.role
   });
 });
 

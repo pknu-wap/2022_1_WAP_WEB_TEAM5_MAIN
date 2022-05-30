@@ -11,11 +11,16 @@ function PostList() {
     e.preventDefault();
     let category = e.target.value;
 
-    const request = await axios
+    const request = await axios //해당 카테고리
       .post("/api/post/category", { category: category })
       .then((res) => res.data.postList);
+    const notice = await axios //카테고리와 무관하게 공지사항 가져옴
+      .post("/api/post/category", { category: "notice" })
+      .then((res) => res.data.postList);
+    const tempArray = [];
+    const concatArray = tempArray.concat(notice, request);
 
-    await setPostList(request);
+    await setPostList(concatArray);
   };
 
   useEffect(() => {
@@ -24,8 +29,13 @@ function PostList() {
       const request = await axios
         .get("/api/post/postlist")
         .then((res) => res.data.postList);
+      const notice = await axios //카테고리와 무관하게 공지사항 가져옴
+        .post("/api/post/category", { category: "notice" })
+        .then((res) => res.data.postList);
+      const tempArray = [];
+      const concatArray = tempArray.concat(notice, request);
 
-      await setPostList(request);
+      await setPostList(concatArray);
     }
     fetchData();
   }, []);
