@@ -12,6 +12,8 @@ const { Index } = require("./models/PostIndex");
 const { Comment } = require("./models/Comment");
 const { MyPage } = require("./models/MyPage");
 const { CalPost } = require("./models/CalPost");
+const { Server } = require("socket.io");
+const http = require("http");
 //const userRouter = require("./routers/user");
 const router = express.Router();
 //app.set('view engine', 'ejs');
@@ -20,6 +22,39 @@ app.use(bodyparser.urlencoded({ extended: true }));
 app.use(bodyparser.json());
 app.use(cookieParser()); //요청된 쿠키를 쉽게 추출할 수 있도록 도와주는 미들웨어, express 의 req 객체에 cookies 속성이 부여된다.
 
+mongoose
+  .connect(db.mongoURI, {
+    useUnifiedTopology: true,
+    autoIndex: true, //make this also true
+  })
+  .then(() => console.log("MongoDB Connected..."))
+  .catch((err) => console.log(err));
+
+const server = http.createServer(app);
+const io = new Server(server, {
+  cors: {
+    origin: "http://localhost:3000",
+    method: ["GET", "POST"],
+  },
+});
+
+io.on("connection", (socket) => {
+  console.log(`User Connected: ${socket.id}`);
+
+  socket.on("join_room", (data) => {
+    socket.join(data); //방을 만들고
+  });
+
+  socket.on("send_message", ({ name, message, room }) => {
+    console.log(`server send_messge ${name} ${message} ${room}`);
+    io.to(room).emit("receive_message", { name, message });
+  });
+});
+
+server.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
+///////////////////////////////////////////////
 app.get("/api/calendar/post", (req, res) => {
   CalPost.find({}, (err, postList) => {
     if (err) {
@@ -28,7 +63,7 @@ app.get("/api/calendar/post", (req, res) => {
       });
     }
     return res.json({
-      postList: postList
+      postList: postList,
     });
   });
 });
@@ -269,7 +304,7 @@ app.post("/api/post/post", auth, (req, res) => {
 });
 
 app.get("/api/post/postlist", (req, res) => {
-  Post.find({category: {$ne: "notice"}}, (err, postList) => {
+  Post.find({ category: { $ne: "notice" } }, (err, postList) => {
     console.log(`Post.find postList => ${postList}`);
     if (!postList) {
       return res.json({
@@ -288,7 +323,7 @@ app.get("/api/post/postlist", (req, res) => {
 
 app.post("/api/post/category", (req, res) => {
   if (req.body.category == "all") {
-    Post.find({category: {$ne: "notice"}}, (err, postList) => {
+    Post.find({ category: { $ne: "notice" } }, (err, postList) => {
       console.log(`Post.find postList => ${postList}`);
       if (!postList) {
         return res.json({
@@ -320,14 +355,14 @@ app.post("/api/post/category", (req, res) => {
   }
 });
 ////////////////////////////////////////////////////////////
-app.get("/api/users/userlist", (req,res)=>{
-  User.find({category: {$ne: 1}},(err, userList)=> {
-    if(err){
-      return res.json({userListSuccess: false, err})
+app.get("/api/users/userlist", (req, res) => {
+  User.find({ category: { $ne: 1 } }, (err, userList) => {
+    if (err) {
+      return res.json({ userListSuccess: false, err });
     }
-    return res.status(200).json({useListSuccess:true, userList})
-  })
-})
+    return res.status(200).json({ useListSuccess: true, userList });
+  });
+});
 app.post("/api/users/register", (req, res) => {
   const user = new User(req.body);
   console.log(`새로 생성된 new User(req.body) = ${user}`);
@@ -389,7 +424,7 @@ app.get("/api/users/auth", auth, (req, res) => {
     email: req.user.email,
     name: req.user.name,
     age: req.user.age,
-    role: req.user.role
+    role: req.user.role,
   });
 });
 
@@ -403,17 +438,6 @@ app.get("/api/users/logout", auth, (req, res) => {
 });
 ////////////////////////////////////////////////
 
-mongoose
-  .connect(db.mongoURI, {
-    useUnifiedTopology: true,
-    autoIndex: true, //make this also true
-  })
-  .then(() => console.log("MongoDB Connected..."))
-  .catch((err) => console.log(err));
-
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
 ///////////////////////////////////////////////////////////////
 /*
 app.get('/api/users/auth', auth, (req, res) => {

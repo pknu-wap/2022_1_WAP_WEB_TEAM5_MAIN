@@ -14,6 +14,7 @@ import MyPageModi from "./components/Community/MyPageModi";
 import OtherPage from "./components/Community/OtherPage";
 import PostDetailModi from "./components/Community/PostDetailModi";
 import AdminPage from "./components/Community/AdminPage";
+import Chat from "./components/Chat/Chat";
 
 function App() {
   const [isAuth, setIsAuth] = useState(false);
@@ -47,6 +48,7 @@ function App() {
           <Route path="/mypage/:name" element={<OtherPage />} />
           <Route path="/mypage/modify" element={<MyPageModi />} />
           <Route path="/adminpage" element={<AdminPage />} />
+          <Route path="chatpage" element={<Chat/>}/>
         </Routes>
       </div>
     </div>
