@@ -18,23 +18,25 @@ import Chat from "./components/Chat/Chat";
 
 function App() {
   const [isAuth, setIsAuth] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(0);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [name, setName] = useState("");
 
   axios.get("/api/users/auth").then((res) => {
     if (res.data.isAuth) {
       setIsAuth(true);
+      setName(res.data.name);
       console.log("isAuth is true");
     } else {
       console.log("isAuth is false");
     }
     if( res.data.isAdmin){
-      setIsAdmin(1);
+      setIsAdmin(true);
     }
   });
 
   return (
     <div className="App">
-      <Navigation isAuth={isAuth} isAdmin={isAdmin} />
+      <Navigation isAuth={isAuth} name={name} isAdmin={isAdmin} />
       <div className="routes">
         <Routes>
           <Route path="/" element={<Home />} />
@@ -48,7 +50,7 @@ function App() {
           <Route path="/mypage/:name" element={<OtherPage />} />
           <Route path="/mypage/modify" element={<MyPageModi />} />
           <Route path="/adminpage" element={<AdminPage />} />
-          <Route path="chatpage" element={<Chat/>}/>
+          <Route path="/chatpage" element={<Chat/>}/>
         </Routes>
       </div>
     </div>

@@ -4,7 +4,11 @@ import Modal from "./modal";
 function Detail({ posts, date }) {
   const [modalState, setModalState] = useState(false);
   const openModal = () => {
+    if(posts.length){
     setModalState(true);
+    }else{
+      alert("등록된 일정이 없습니다.")
+    }
   };
   const closeModal = () => {
     setModalState(false);

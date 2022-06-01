@@ -14,6 +14,7 @@ const { MyPage } = require("./models/MyPage");
 const { CalPost } = require("./models/CalPost");
 const { Server } = require("socket.io");
 const http = require("http");
+const { Chat } = require("./models/chat");
 //const userRouter = require("./routers/user");
 const router = express.Router();
 //app.set('view engine', 'ejs');
@@ -53,6 +54,40 @@ io.on("connection", (socket) => {
 
 server.listen(port, () => {
   console.log(`Server is running on port ${port}`);
+});
+///////////////////////////////////////////////
+app.post("/api/chat/postlist", auth, (req, res) => {
+  Chat.find({ room: req.body.room }, (err, chatList) => {
+    if (err) {
+      return res.json({ chatListSuccess: false, err });
+    } else {
+      return res.status(200).json({ chatListSuccess: true, chatList });
+    }
+  });
+});
+
+app.post("/api/chat/post", auth, (req, res) => {
+  const chat = new Chat({
+    name: req.body.name,
+    message: req.body.message,
+    room: req.body.room,
+  });
+  chat.save((err, chatInfo) => {
+    if (err) {
+      return res.json({ chatPostSuccess: false, err });
+    } else {
+      Chat.find({ room: req.body.room }, (err, chatList) => {
+        if (chatList.length > 40) {
+          for (let i = 0; i < chatList.length - 40; i++) {
+            Chat.deleteOne({}, (err, deleteInfo) => {
+              console.log(deleteInfo);
+            });
+          }
+        }
+      });
+      return res.status(200).json({ chatPostSuccess: true });
+    }
+  });
 });
 ///////////////////////////////////////////////
 app.get("/api/calendar/post", (req, res) => {
