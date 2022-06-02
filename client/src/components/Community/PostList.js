@@ -59,7 +59,7 @@ function PostList() {
   return (
     <div className="postPage">
       <div className="listTitle">POSTLIST</div>
-      <select className="category" onChange={onCategoryHandler}>
+      <select class="form-select" size="3" aria-label="size 3 select example" onChange={onCategoryHandler}>
         <option value="all">All</option>
         <option value="work out">Work out</option>
         <option value="jogging">Jogging</option>
