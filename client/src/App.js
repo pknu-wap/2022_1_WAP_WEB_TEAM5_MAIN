@@ -15,6 +15,7 @@ import OtherPage from "./components/Community/OtherPage";
 import PostDetailModi from "./components/Community/PostDetailModi";
 import AdminPage from "./components/Community/AdminPage";
 import Chat from "./components/Chat/Chat";
+import Test from "./Test"
 
 function App() {
   const [isAuth, setIsAuth] = useState(false);
@@ -36,23 +37,24 @@ function App() {
 
   return (
     <div className="App">
-      <Navigation isAuth={isAuth} name={name} isAdmin={isAdmin} />
-      <div className="routes">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/logout" />
-          <Route path="/signup" element={<Register />} />
-          <Route path="/post" element={<PostForm />} />
-          <Route path="/post/:id" element={<Detail />} />
-          <Route path="/post/modify" element={<PostDetailModi />} />
-          <Route path="/mypage" element={<MyPage />} />
-          <Route path="/mypage/:name" element={<OtherPage />} />
-          <Route path="/mypage/modify" element={<MyPageModi />} />
-          <Route path="/adminpage" element={<AdminPage />} />
-          <Route path="/chatpage" element={<Chat/>}/>
-        </Routes>
-      </div>
+      <Navigation isAuth={isAuth} isAdmin={isAdmin} />
+          <div className="routes">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/logout" />
+              <Route path="/signup" element={<Register />} />
+              <Route path="/post" element={<PostForm />} />
+              <Route path="/post/:id" element={<Detail />} />
+              <Route path="/post/modify" element={<PostDetailModi />} />
+              <Route path="/mypage" element={<MyPage />} />
+              <Route path="/mypage/:name" element={<OtherPage />} />
+              <Route path="/mypage/modify" element={<MyPageModi />} />
+              <Route path="/adminpage" element={<AdminPage />} />
+              <Route path="chatpage" element={<Chat/>}/>
+              <Route path="/Test" element={<Test/>}/>
+            </Routes>
+          </div>      
     </div>
   );
 }

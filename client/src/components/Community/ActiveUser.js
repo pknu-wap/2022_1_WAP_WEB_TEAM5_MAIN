@@ -30,7 +30,7 @@ function ActiveUser() {
       </div>
       {userList &&
         userList.map((user) => (
-          <div className="user">
+          <div className="list-group-item d-flex justify-content-between align-items-center">
             <Link
               className="postName"
               to={{ pathname: `/mypage/${user.name}` }}

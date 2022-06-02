@@ -18,12 +18,15 @@ const root = createRoot(rootElement);
 
 const store = configureStore({reducer: Reducer});
 
+
+
+
 root.render(
   <Provider store={store}>
     <BrowserRouter>
-      <StrictMode>
-        <App />
-      </StrictMode>
+        <StrictMode>
+          <App />
+        </StrictMode>
     </BrowserRouter>
   </Provider>
 );
