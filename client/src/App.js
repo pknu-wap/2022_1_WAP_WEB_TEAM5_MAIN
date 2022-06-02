@@ -15,7 +15,6 @@ import OtherPage from "./components/Community/OtherPage";
 import PostDetailModi from "./components/Community/PostDetailModi";
 import AdminPage from "./components/Community/AdminPage";
 import Chat from "./components/Chat/Chat";
-import Test from "./Test"
 
 function App() {
   const [isAuth, setIsAuth] = useState(false);
@@ -52,7 +51,6 @@ function App() {
               <Route path="/mypage/modify" element={<MyPageModi />} />
               <Route path="/adminpage" element={<AdminPage />} />
               <Route path="chatpage" element={<Chat/>}/>
-              <Route path="/Test" element={<Test/>}/>
             </Routes>
           </div>      
     </div>
