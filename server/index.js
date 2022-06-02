@@ -298,6 +298,18 @@ app.post("/api/post/modify", (req, res) => {
   );
 });
 
+app.post("/api/post/search", auth, (req, res) => {
+  Post.find(
+    { category: { $ne: "notice" }, title: { $regex: req.body.input } },
+    (err, searchList) => {
+      if (err) {
+        return res.json({ searchSuccess: false });
+      }
+      return res.json({ searchSuccess: true, searchList: searchList });
+    }
+  );
+});
+
 app.post("/api/post/post", auth, (req, res) => {
   Index.find(
     ({},
@@ -339,7 +351,7 @@ app.post("/api/post/post", auth, (req, res) => {
 });
 
 app.get("/api/post/postlist", (req, res) => {
-  Post.find({ category: { $ne: "notice" } }, (err, postList) => {
+  Post.find({ title: { $ne: "notice" } }, (err, postList) => {
     console.log(`Post.find postList => ${postList}`);
     if (!postList) {
       return res.json({

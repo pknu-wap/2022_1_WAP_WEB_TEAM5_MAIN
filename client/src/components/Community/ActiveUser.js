@@ -28,7 +28,7 @@ function ActiveUser() {
       <div>
         <button onClick={onReloadHandler}>RELOAD</button>
       </div>
-      {userList.length &&
+      {userList &&
         userList.map((user) => (
           <div className="user">
             <Link

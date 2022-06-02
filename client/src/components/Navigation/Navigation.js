@@ -40,7 +40,7 @@ function Navigation({ isAuth, name, isAdmin }) {
         <Link to="/post">Post</Link>
         <Link to="/mypage">MyPage</Link>
         {isAdmin && <Link to="/adminPage">Admin</Link>}
-        <Link to="/chatpage" state={{name}}>Chat</Link>
+        <Link to="/chatpage" state={{host:name, guest:name}}>Chat</Link>
         <span>
           {time.getMonth() + 1} / {time.getDate()} 일 {time.getHours()}시 {time.getMinutes()}분 {time.getSeconds()}초
         </span>
