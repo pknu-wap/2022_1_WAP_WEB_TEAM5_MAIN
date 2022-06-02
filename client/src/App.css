@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding:wght@700&display=swap');
 .App {
   height: 100vh;
   text-align: center;
-  background-color: whitesmoke;
+  background-color: #4aa6ec ;
+  font-family: 'Nanum Gothic Coding', monospace;
 }

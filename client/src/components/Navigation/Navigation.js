@@ -31,29 +31,48 @@ function Navigation({ isAuth, isAdmin }) {
 
   if (isAuth) {
     return (
-      <div className="navigation">
-        <Link to="/">Home</Link>
-        <a href="/api/users/logout" onClick={onLogoutHandler}>
-          Logout
-        </a>
-        <Link to="/post" state={{}}>Post</Link>
-        <Link to="/mypage">MyPage</Link>
-        {isAdmin && <Link to="/adminPage">AdminPage</Link>}
-        <span>
-          {time.getMonth() + 1} / {time.getDate()} 일 {time.getHours()}시 {time.getMinutes()}분 {time.getSeconds()}초
-        </span>
-      </div>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div className="navigation">
+            <Link to="/">Home</Link>
+
+            <Link to="/post" state={{}}>Post</Link>
+
+            <Link to="/">Calender</Link>
+
+            <Link to="/mypage">MyPage</Link>
+
+            <a href="/api/users/logout" onClick={onLogoutHandler}>
+              Logout
+            </a>
+
+            {isAdmin && <Link to="/adminPage">AdminPage</Link>}
+            <span className = "timeBar">
+              {time.getMonth() + 1} / {time.getDate()} 일 {time.getHours()}시 {time.getMinutes()}분 {time.getSeconds()}초
+            </span>
+
+          </div>
+      </nav>
+    
+    
     );
   }
   return (
-    <div className="navigation">
-      <Link to="/">Home</Link>
-      <Link to="/login">Login</Link>
-      <Link to="/signup">SignUp</Link>
-      <span>
-          {time.getMonth() + 1} / {time.getDate()} 일 {time.getHours()}시 {time.getMinutes()}분 {time.getSeconds()}초
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div className="navigation">
+        <Link to="/">Home</Link>
+
+        <Link to="/post" state={{}}>Post</Link>
+
+        <Link to="/">Calender</Link>
+
+        <Link to="/login">Login</Link>
+
+        <Link to="/signup">SignUp</Link>
+        <span className = "timeBar">
+            {time.getMonth() + 1} / {time.getDate()} 일 {time.getHours()}시 {time.getMinutes()}분 {time.getSeconds()}초
         </span>
-    </div>
+      </div>
+    </nav>
   );
 }
 
