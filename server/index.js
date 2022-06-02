@@ -14,6 +14,7 @@ const { MyPage } = require("./models/MyPage");
 const { CalPost } = require("./models/CalPost");
 const { Server } = require("socket.io");
 const http = require("http");
+const { Chat } = require("./models/chat");
 //const userRouter = require("./routers/user");
 const router = express.Router();
 //app.set('view engine', 'ejs');
@@ -53,6 +54,40 @@ io.on("connection", (socket) => {
 
 server.listen(port, () => {
   console.log(`Server is running on port ${port}`);
+});
+///////////////////////////////////////////////
+app.post("/api/chat/postlist", auth, (req, res) => {
+  Chat.find({ room: req.body.room }, (err, chatList) => {
+    if (err) {
+      return res.json({ chatListSuccess: false, err });
+    } else {
+      return res.status(200).json({ chatListSuccess: true, chatList });
+    }
+  });
+});
+
+app.post("/api/chat/post", auth, (req, res) => {
+  const chat = new Chat({
+    name: req.body.name,
+    message: req.body.message,
+    room: req.body.room,
+  });
+  chat.save((err, chatInfo) => {
+    if (err) {
+      return res.json({ chatPostSuccess: false, err });
+    } else {
+      Chat.find({ room: req.body.room }, (err, chatList) => {
+        if (chatList.length > 40) {
+          for (let i = 0; i < chatList.length - 40; i++) {
+            Chat.deleteOne({}, (err, deleteInfo) => {
+              console.log(deleteInfo);
+            });
+          }
+        }
+      });
+      return res.status(200).json({ chatPostSuccess: true });
+    }
+  });
 });
 ///////////////////////////////////////////////
 app.get("/api/calendar/post", (req, res) => {
@@ -263,6 +298,18 @@ app.post("/api/post/modify", (req, res) => {
   );
 });
 
+app.post("/api/post/search", auth, (req, res) => {
+  Post.find(
+    { category: { $ne: "notice" }, title: { $regex: req.body.input } },
+    (err, searchList) => {
+      if (err) {
+        return res.json({ searchSuccess: false });
+      }
+      return res.json({ searchSuccess: true, searchList: searchList });
+    }
+  );
+});
+
 app.post("/api/post/post", auth, (req, res) => {
   Index.find(
     ({},
@@ -304,7 +351,7 @@ app.post("/api/post/post", auth, (req, res) => {
 });
 
 app.get("/api/post/postlist", (req, res) => {
-  Post.find({ category: { $ne: "notice" } }, (err, postList) => {
+  Post.find({ title: { $ne: "notice" } }, (err, postList) => {
     console.log(`Post.find postList => ${postList}`);
     if (!postList) {
       return res.json({

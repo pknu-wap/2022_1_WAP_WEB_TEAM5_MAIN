@@ -28,7 +28,7 @@ function ActiveUser() {
       <div>
         <button onClick={onReloadHandler}>RELOAD</button>
       </div>
-      {userList.length &&
+      {userList &&
         userList.map((user) => (
           <div className="list-group-item d-flex justify-content-between align-items-center">
             <Link

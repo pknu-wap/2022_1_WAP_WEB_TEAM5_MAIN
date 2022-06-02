@@ -19,17 +19,19 @@ import Test from "./Test"
 
 function App() {
   const [isAuth, setIsAuth] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(0);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [name, setName] = useState("");
 
   axios.get("/api/users/auth").then((res) => {
     if (res.data.isAuth) {
       setIsAuth(true);
+      setName(res.data.name);
       console.log("isAuth is true");
     } else {
       console.log("isAuth is false");
     }
     if( res.data.isAdmin){
-      setIsAdmin(1);
+      setIsAdmin(true);
     }
   });
 

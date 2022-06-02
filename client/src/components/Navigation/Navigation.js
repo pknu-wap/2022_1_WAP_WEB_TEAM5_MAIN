@@ -3,9 +3,10 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { pathToFileURL } from "url";
+import Chat from "../Chat/Chat";
 import "./Navigation.css";
 
-function Navigation({ isAuth, isAdmin }) {
+function Navigation({ isAuth, name, isAdmin }) {
   const navigate = useNavigate();
 
   const [time, setTime] = useState(new Date());

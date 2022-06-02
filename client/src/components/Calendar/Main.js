@@ -100,12 +100,12 @@ function Main() {
         }
       });
     }
-
-    async function fetchPostData() {
+   async function fetchPostData() {
       await axios.get("/api/calendar/post").then((res) => {
         setPostArray(res.data.postList);
       });
     }
+ 
 
     fetchAuthData();
     fetchPostData();
