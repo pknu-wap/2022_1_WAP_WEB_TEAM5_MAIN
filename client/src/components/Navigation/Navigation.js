@@ -35,16 +35,16 @@ function Navigation({ isAuth, name, isAdmin }) {
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div className="navigation">
           <Link to="/">Home</Link>
-          <Link to="/post">
-            Post
-          </Link>
+          <Link to="/post">Post</Link>
           <Link to="/calendar">Calender</Link>
           <Link to="/mypage">MyPage</Link>
           <a href="/api/users/logout" onClick={onLogoutHandler}>
             Logout
           </a>
           {isAdmin && <Link to="/adminpage">AdminPage</Link>}
-          <Link to="/chatpage" state={{host:name, guest:name}}>Chat</Link>
+          <Link to="/chatpage" state={{ host: name, guest: name }}>
+            Chat
+          </Link>
           <span className="timeBar">
             {time.getMonth() + 1} / {time.getDate()} 일 {time.getHours()}시{" "}
             {time.getMinutes()}분 {time.getSeconds()}초

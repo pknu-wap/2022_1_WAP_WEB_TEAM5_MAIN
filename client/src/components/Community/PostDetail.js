@@ -11,32 +11,24 @@ function Detail() {
   const navigate = useNavigate();
   const state = location.state;
   const [isMyPost, setIsMyPost] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(false);
-  const [loginUser, setLoginUser] = useState(false);
-  const [myName, setMyName] = useState("");
+  const [isAdmin, setIsAdmin] = useState(0);
   console.log(state);
 
   useEffect(() => {
     async function fetchData() {
-     await axios.get("/api/users/auth").then((res) => {
-        //여기까지 오면 로그인 상태라는게 확인된 것
-        setMyName(res.data.name);
+      axios.get("/api/users/auth").then((res) => {
         if (res.data.name == state.name) {
           console.log(
             `res.data.name = ${res.data.name} state.name = ${state.name}`
           );
           setIsMyPost(true);
         } else if (res.data.isAdmin) {
-          setIsAdmin(true);
+          setIsAdmin(1);
         }
-        if(res.data.name){
-          loginUser(true);
-        }
-       
       });
     }
     fetchData();
-  },[]);
+  }, []);
 
   const onDeleteHandler = async (e) => {
     e.preventDefault();
@@ -66,12 +58,7 @@ function Detail() {
         {state.date !== state.modiDate && (
           <div>마지막 수정한 날짜: {state.modiDate}</div>
         )}
-      </div>                                                                              
-      {loginUser &&
-        <Link to="/chatpage" state={{ host: state.name, guest: myName }}>
-          채팅하기
-        </Link>
-      }
+      </div>
       <div className="commentTitle">Comment</div>
       <Comment id={state.id} />
       {isMyPost && (

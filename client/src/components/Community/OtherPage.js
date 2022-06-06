@@ -19,22 +19,16 @@ function OtherPage() {
   const [hobby, setHobby] = useState("");
   const [textArea, setTextArea] = useState("");
   const [isOwnPage, setIsOwnPage] = useState(false);
-  const [hostUser, setHostUser] = useState({});
-  const [guestUser, setGuestUser] = useState({});
-  const [loginUser, setLoginUser] = useState(false);
+  const [loginUser, setLoginUser] = useState({});
 
   useEffect(() => {
     async function fetchData() {
       // auth 의 name과 state.name 이 일치할때
       await axios.get("/api/users/auth").then((res) => {
-        setGuestUser(res.data);
         if (res.data.name == name) {
           setIsOwnPage(true);
-          setHostUser(res.data);
+          setLoginUser(res.data);
           console.log(res.data);
-        }
-        if (res.data.name) {
-          setLoginUser(true);
         }
       });
 
@@ -90,7 +84,7 @@ function OtherPage() {
             <div>{otherPage[0].hobby}</div>
             <label>Comment</label>
             <div>{otherPage[0].textArea}</div>
-            {isOwnPage ? (
+            {isOwnPage && (
               <button>
                 <Link
                   to="/mypage/modify"
@@ -105,13 +99,6 @@ function OtherPage() {
                   MODIFY
                 </Link>
               </button>
-            ) : (
-              <Link
-                to="/chatpage"
-                state={{ host: otherPage[0].name, guest: guestUser.name }}
-              >
-                채팅
-              </Link>
             )}
           </div>
         </div>
@@ -121,9 +108,9 @@ function OtherPage() {
             <div className="myPagePage">
               <div>자기소개가 등록되지 않았습니다.</div>
               <label>Name</label>
-              <div>{hostUser.name}</div>
-              <label>Age</label>
-              <div>{hostUser.age}</div>
+            <div>{loginUser.name}</div>
+            <label>Age</label>
+            <div>{loginUser.age}</div>
               <form className="infoForm" onSubmit={onSubmitHandler}>
                 <h2>Title</h2>
                 <input type="text" onChange={onHobbyHandler} />
@@ -133,17 +120,7 @@ function OtherPage() {
               </form>
             </div>
           ) : (
-            <div>
-              <div>아직 상대방의 자기소개가 등록되지 않았습니다.</div>
-              {loginUser && (
-                <Link
-                  to="/chatpage"
-                  state={{ host: name, guest: guestUser.name }}
-                >
-                  채팅
-                </Link>
-              )}
-            </div>
+            <div>아직 상대방의 자기소개가 등록되지 않았습니다.</div>
           )}
         </div>
       )}
