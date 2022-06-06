@@ -2,7 +2,9 @@
     box-sizing: border-box;
 }
 .calendar {
-  width: 45%;
+
+  margin:auto;
+  width: 90%;
 }
 
 .header {
