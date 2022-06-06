@@ -1,19 +1,14 @@
 .myPage{
     margin:auto;
-    margin-top: 30px;
     color:black;
-    width: 500px;
-    height: 630px;
-    background-color: lightgray;
-    display:flex;
+    background-color: aliceblue;
     flex-direction: column;
-    padding:15px;
     border-radius: 5px;
-    font-size: 20px;
+    display: flex;
+    align-items: center;
 }
 
-.myPagePage label{
-    font-weight: 600;
+.myPagePage label{  
     font-size: 30px;
 }
 
@@ -21,7 +16,7 @@
     width:80px;
 }
 .myPagePage button a{
-    color:black;
+    color : white;
     text-decoration: none;
 }
 
