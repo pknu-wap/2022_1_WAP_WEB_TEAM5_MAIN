@@ -66,6 +66,7 @@ function MyPage() {
 
   return (
     <div>
+      <h3>Mypage</h3>
       {myPage.length ? (
         <div className="myPage">
           <div className="myPagePage">
@@ -79,7 +80,7 @@ function MyPage() {
             <div>{myPage[0].hobby}</div>
             <label>Comment</label>
             <div>{myPage[0].textArea}</div>
-            <button>
+            <button className="btn btn-primary">
               <Link
                 to="/mypage/modify"
                 state={{
@@ -96,19 +97,20 @@ function MyPage() {
           </div>
         </div>
       ) : (
+        
         <div className="myPage">
           <div className="myPagePage">
-            <div>자기소개가 등록되지 않았습니다.</div>
+            <div>자기소개를 등록해주세요.</div>
             <label>Name</label>
-            <div>{loginUser.name}</div>
+            <div className = "mypageLabel">{loginUser.name}</div>
             <label>Age</label>
-            <div>{loginUser.age}</div>
+            <div className = "mypageLabel">{loginUser.age}</div>
             <form className="infoForm" onSubmit={onSubmitHandler}>
-              <h2>Title</h2>
-              <input type="text" onChange={onHobbyHandler} />
-              <h2>TextArea</h2>
-              <textarea type="text" onChange={onTextAreaHandler} />
-              <button type="submit">Submit</button>
+              <h2>Hobby</h2>
+              <input type="text" className="form-control" onChange={onHobbyHandler} />
+              <h2>Comment</h2>
+              <textarea type="text" className="form-control" onChange={onTextAreaHandler} />
+              <button className="btn btn-primary" type="submit">Submit</button>
             </form>
           </div>
         </div>

@@ -4,8 +4,11 @@
 }
 
 .postForm{
-    flex-direction: column;
     justify-content: center;
+    margin-left: 15%;
+    margin-right: 15%;
+    padding : 10px;
+    background-color: aliceblue
 }
 .postForm input{
     height: 30px;
@@ -34,10 +37,3 @@
     margin-top:5px;
     margin-bottom:10px;
 }
-
-.postForm form {
-    margin-left: 15%;
-    margin-right: 15%;
-    padding : 10px;
-    background-color: aliceblue;
-}   
