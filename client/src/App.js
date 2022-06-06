@@ -50,7 +50,7 @@ function App() {
               <Route path="/mypage/:name" element={<OtherPage />} />
               <Route path="/mypage/modify" element={<MyPageModi />} />
               <Route path="/adminpage" element={<AdminPage />} />
-              <Route path="chatpage" element={<Chat/>}/>
+              <Route path="/chatpage" element={<Chat/>}/>
             </Routes>
           </div>      
     </div>

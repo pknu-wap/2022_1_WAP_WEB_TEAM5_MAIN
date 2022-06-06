@@ -2,11 +2,13 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Post from "./Post";
 import "./PostList.css";
+import { Link } from "react-router-dom";
 
 function PostList() {
   const [PostList, setPostList] = useState([]);
   const [category, setCategory] = useState("etc");
   const [input, setInput] = useState("");
+  const [isAuth, setIsAuth] = useState(false);
 
   const onCategoryHandler = async (e) => {
     e.preventDefault();
@@ -27,6 +29,11 @@ function PostList() {
   useEffect(() => {
     async function fetchData() {
       // You can await here
+      await axios.get("/api/users/auth").then((res) => {
+        if (res.data.isAuth) {
+          setIsAuth(true);
+        }
+      });
       const request = await axios
         .get("/api/post/postlist")
         .then((res) => res.data.postList);
@@ -59,7 +66,7 @@ function PostList() {
   return (
     <div className="postPage">
       <div className="listTitle">POSTLIST</div>
-      <select class="form-select" size="3" aria-label="size 3 select example" onChange={onCategoryHandler}>
+      <select onChange={onCategoryHandler}>
         <option value="all">All</option>
         <option value="work out">Work out</option>
         <option value="jogging">Jogging</option>
@@ -75,6 +82,19 @@ function PostList() {
           placeholder="제목으로 검색"
         />
         <button onClick={onSearchHandler}>Search</button>
+        <button>
+          <Link
+            to="/post"
+            onClick={(e) => {
+              if (!isAuth) {
+                e.preventDefault();
+                alert("로그인이 필요합니다.");
+              }
+            }}
+          >
+            Post
+          </Link>
+        </button>
       </span>
       <div className="postList">
         {PostList &&
