@@ -16,7 +16,7 @@ import PostDetailModi from "./components/Community/PostDetailModi";
 import AdminPage from "./components/Community/AdminPage";
 import Chat from "./components/Chat/Chat";
 import Test from "./Test"
-
+import Main from "./components/Calendar/Main"
 function App() {
   const [isAuth, setIsAuth] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
@@ -53,6 +53,7 @@ function App() {
               <Route path="/adminpage" element={<AdminPage />} />
               <Route path="chatpage" element={<Chat/>}/>
               <Route path="/Test" element={<Test/>}/>
+              <Route path="/calender" element={<Main/>}></Route>
             </Routes>
           </div>      
     </div>

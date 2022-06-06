@@ -38,7 +38,7 @@ function Navigation({ isAuth, name, isAdmin }) {
 
             <Link to="/post" state={{}}>Post</Link>
 
-            <Link to="/">Calender</Link>
+            <Link to="/calender">Calender</Link>
 
             <Link to="/mypage">MyPage</Link>
 
@@ -64,7 +64,7 @@ function Navigation({ isAuth, name, isAdmin }) {
 
         <Link to="/post" state={{}}>Post</Link>
 
-        <Link to="/">Calender</Link>
+        <Link to="/calender">Calender</Link>
 
         <Link to="/login">Login</Link>
 
