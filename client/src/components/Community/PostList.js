@@ -59,23 +59,25 @@ function PostList() {
   return (
     <div className="postPage">
       <div className="listTitle">POSTLIST</div>
-      <select className="category" onChange={onCategoryHandler}>
-        <option value="all">All</option>
-        <option value="work out">Work out</option>
-        <option value="jogging">Jogging</option>
-        <option value="study">Study</option>
-        <option value="etc">Etc</option>
-      </select>
-      <span>
-        <input
-          type="text"
-          onChange={(e) => {
-            setInput(e.target.value);
-          }}
-          placeholder="제목으로 검색"
-        />
-        <button onClick={onSearchHandler}>Search</button>
-      </span>
+      <div className = "AD">
+        <select className="btn btn-primary" onChange={onCategoryHandler}>
+          <option value="all">All</option>
+          <option value="work out">Work out</option>
+          <option value="jogging">Jogging</option>
+          <option value="study">Study</option>
+          <option value="etc">Etc</option>
+        </select>
+        <span>
+          <input
+            type="text"
+            onChange={(e) => {
+              setInput(e.target.value);
+            }}
+            placeholder="제목으로 검색"
+          />
+          <button className="btn btn-primary" onClick={onSearchHandler}>Search</button>
+        </span>
+      </div>
       <div className="postList">
         {PostList &&
           PostList.map((post, index) => (

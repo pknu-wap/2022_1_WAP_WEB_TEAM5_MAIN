@@ -1,5 +1,6 @@
 *{
     box-sizing: border-box;
+    border-radius: 5px;
 }
 
 .postForm{
@@ -34,7 +35,7 @@
     margin-bottom:10px;
 }
 
-form {
+.postForm form {
     margin-left: 15%;
     margin-right: 15%;
     padding : 10px;
