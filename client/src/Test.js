@@ -1,5 +1,3 @@
-import '../node_modules/./bootstrap.min.css'
-
 import { Button, label,input } from 'react-bootstrap';
 import axios from "axios";
 import React, { useEffect, useState } from "react";
