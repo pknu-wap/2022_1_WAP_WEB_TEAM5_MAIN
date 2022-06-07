@@ -8,23 +8,24 @@ import "./PostForm.css";
 function Post() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [isAdmin, setIsAdmin]= useState(0);
+  const [isAdmin, setIsAdmin] = useState(false);
   const [title, setTItle] = useState("");
   const [category, setCategory] = useState("etc");
   const [textArea, setTextArea] = useState("");
+  const [file, setFile] = useState();
 
+  const onFileHandler = (e) => {
+    setFile(e.target.files[0]);
+    console.log(file);
+  };
   const onTitleHandler = (e) => {
-    e.preventDefault();
     setTItle(e.target.value);
   };
 
   const onCategoryHandler = (e) => {
-    e.preventDefault();
     setCategory(e.target.value);
-    console.log(category);
   };
   const onTextAreaHandler = (e) => {
-    e.preventDefault();
     setTextArea(e.target.value);
   };
 
@@ -36,6 +37,10 @@ function Post() {
       category,
       textArea,
     };
+    const formData = new FormData();
+    formData.append("profileImg", file);
+    axios.post("/api/post/post", formData, {});
+    /*
     dispatch(postPost(body)).then((res) => {
       console.log(res);
       if (res.payload.payload.postSuccess) {
@@ -46,46 +51,43 @@ function Post() {
         alert("게시글 작성에 실패했습니다.");
       }
     });
+    */
   };
-  useEffect(()=>{
+  useEffect(() => {
     axios.get("/api/users/auth").then((res) => {
-      if(res.data.isAdmin){
-        setIsAdmin(1);
+      if (res.data.isAdmin) {
+        setIsAdmin(true);
       }
-    })
-  })
+    });
+  });
   return (
     <div>
-      <h3>POST</h3>
-      <form className="postForm" onSubmit={onSubmitHandler}>
-        <div className="mb-3">
-          <label>Category</label><br/>
-          <select className="form-control" onChange={onCategoryHandler}>
-            {isAdmin && <option value="notice">Notice</option>}
-            <option value="work out">Work out</option>
-            <option value="jogging">Jogging</option>
-            <option value="study">Study</option>
-          </select>
+             <h3>POST</h3>
+    <form className="postForm" onSubmit={onSubmitHandler}>
+       <div className="mb-3">
+      <label>Category</label>
+      <select onChange={onCategoryHandler}>
+        {isAdmin && <option value="notice">Notice</option>}
+        <option value="work out">Work out</option>
+        <option value="jogging">Jogging</option>
+        <option value="study">Study</option>
+      </select>
         </div>
-
-
-        <div className="mb-3">
-          <label>Title</label><br/>
-          <input type="text" className="form-control"  onChange={onTitleHandler} />
+         
+          <div className="mb-3">
+      <label>Title</label>
+      <input type="text" onChange={onTitleHandler} />
         </div>
-      
-      
-        <div className="mb-3">
-          <label>TextArea</label><br/>
-          <textarea type="text" className="form-control" onChange={onTextAreaHandler} />
+        
+         <div className="mb-3">
+      <label>TextArea</label>
+      <textarea type="text" onChange={onTextAreaHandler} />
         </div>
-
-        <div className="d-grid">
-          <button type="submit" className="btn btn-primary">Submit</button>
-        </div>
-
-      </form>
-    </div>
+<div className="d-grid">
+      <button type="submit">Submit</button>
+</div>
+    </form>
+  </div>
   );
 }
 

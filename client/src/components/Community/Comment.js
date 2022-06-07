@@ -57,7 +57,7 @@ function Comment({ id }) {
   return (
     <div>
       <div className="commentList">
-        {commentList.length &&
+        {commentList &&
           commentList.map((comment, index) => (
             <div className="comment">
               <span className="commentName">Name: {comment.name}</span>
