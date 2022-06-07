@@ -3,6 +3,7 @@
     padding:10px;
     align-items: center;
     margin:auto;
+    height:50px;
 }
 .navigation a{
     font-size: 20px;

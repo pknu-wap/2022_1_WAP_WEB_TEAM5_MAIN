@@ -68,6 +68,7 @@ function PostList() {
   return (
     <div className="postPage">
       <div className="listTitle">POSTLIST</div>
+    <div className = "AD">
       <select onChange={onCategoryHandler}>
         <option value="all">All</option>
         <option value="work out">Work out</option>
@@ -83,7 +84,7 @@ function PostList() {
           }}
           placeholder="제목으로 검색"
         />
-        <button onClick={onSearchHandler}>Search</button>
+        <button  className="btn btn-primary" onClick={onSearchHandler}>Search</button>
         <button>
           <Link
             to="/post"
@@ -98,6 +99,7 @@ function PostList() {
           </Link>
         </button>
       </span>
+    </div>
       <div className="postList">
         {PostList &&
           PostList.map((post, index) => (
