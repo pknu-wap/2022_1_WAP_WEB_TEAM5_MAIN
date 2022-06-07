@@ -8,7 +8,6 @@ import "./Navigation.css";
 
 function Navigation({ isAuth, name, isAdmin }) {
   const navigate = useNavigate();
-
   const [time, setTime] = useState(new Date());
   useEffect(() => {
     setInterval(() => {
@@ -33,44 +32,36 @@ function Navigation({ isAuth, name, isAdmin }) {
   if (isAuth) {
     return (
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <div className="navigation">
-            <Link to="/">Home</Link>
-
-            <Link to="/post" state={{}}>Post</Link>
-
-            <Link to="/calender">Calender</Link>
-
-            <Link to="/mypage">MyPage</Link>
-
-            <a href="/api/users/logout" onClick={onLogoutHandler}>
-              Logout
-            </a>
-
-            {isAdmin && <Link to="/adminPage">AdminPage</Link>}
-            <span className = "timeBar">
-              {time.getMonth() + 1} / {time.getDate()} 일 {time.getHours()}시 {time.getMinutes()}분 {time.getSeconds()}초
-            </span>
-
-          </div>
+        <div className="navigation">
+          <Link to="/">Home</Link>
+          <Link to="/post">Post</Link>
+          <Link to="/calendar">Calendar</Link>
+          <Link to="/mypage">MyPage</Link>
+          <a href="/api/users/logout" onClick={onLogoutHandler}>
+            Logout
+          </a>
+          {isAdmin && <Link to="/adminpage">AdminPage</Link>}
+          <Link to="/chatpage" state={{ host: name, guest: name }}>
+            Chat
+          </Link>
+          <span className="timeBar">
+            {time.getMonth() + 1} / {time.getDate()} 일 {time.getHours()}시{" "}
+            {time.getMinutes()}분 {time.getSeconds()}초
+          </span>
+        </div>
       </nav>
-    
-    
     );
   }
   return (
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div className="navigation">
         <Link to="/">Home</Link>
-
-        <Link to="/post" state={{}}>Post</Link>
-
-        <Link to="/calender">Calender</Link>
-
+        <Link to="/calendar">Calendar</Link>
         <Link to="/login">Login</Link>
-
         <Link to="/signup">SignUp</Link>
-        <span className = "timeBar">
-            {time.getMonth() + 1} / {time.getDate()} 일 {time.getHours()}시 {time.getMinutes()}분 {time.getSeconds()}초
+        <span className="timeBar">
+          {time.getMonth() + 1} / {time.getDate()} 일 {time.getHours()}시{" "}
+          {time.getMinutes()}분 {time.getSeconds()}초
         </span>
       </div>
     </nav>

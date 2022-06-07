@@ -10,7 +10,7 @@ function Home() {
       <div className="home2">
         <ActiveUser />
         <PostList />
-      </div>  
+      </div>
     </div>
   );
 }

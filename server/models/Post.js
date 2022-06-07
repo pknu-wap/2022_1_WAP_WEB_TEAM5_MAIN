@@ -36,6 +36,9 @@ const postSchema = mongoose.Schema({
     type: Date,
     default: () => Date.now(),
   },
+  profileImg: {
+    type:String
+  }
 });
 
 const Post = mongoose.model("Post", postSchema);
