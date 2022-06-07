@@ -1,9 +1,8 @@
 .home2 {
     display: flex;
-    width: 45%;
+    width: 80%;
+    margin:auto;
+    margin-top: 5%;
     justify-content: center;
-}
-.home1{
-    display: flex;
-    justify-content: space-around;
+    height:100%;
 }

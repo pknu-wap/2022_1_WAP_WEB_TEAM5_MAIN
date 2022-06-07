@@ -61,33 +61,41 @@ function Post() {
     });
   });
   return (
-    <div>
-             <h3>POST</h3>
-    <form className="postForm" onSubmit={onSubmitHandler}>
-       <div className="mb-3">
-      <label>Category</label>
-      <select onChange={onCategoryHandler}>
-        {isAdmin && <option value="notice">Notice</option>}
-        <option value="work out">Work out</option>
-        <option value="jogging">Jogging</option>
-        <option value="study">Study</option>
-      </select>
+    <div className="postFormPage">
+      <h3>POST</h3>
+      <form className="postForm" onSubmit={onSubmitHandler}>
+        <div className="mb-3">
+          <div>
+            <label>Category</label>
+          </div>
+
+          <select onChange={onCategoryHandler}>
+            {isAdmin && <option value="notice">Notice</option>}
+            <option value="work out">Work out</option>
+            <option value="jogging">Jogging</option>
+            <option value="study">Study</option>
+          </select>
         </div>
-         
-          <div className="mb-3">
-      <label>Title</label>
-      <input type="text" onChange={onTitleHandler} />
+
+        <div className="mb-3">
+          <div>
+            <label>Title</label>
+          </div>
+          <input type="text" onChange={onTitleHandler} />
         </div>
-        
-         <div className="mb-3">
-      <label>TextArea</label>
-      <textarea type="text" onChange={onTextAreaHandler} />
+
+        <div className="mb-3">
+          <div>
+            <label>TextArea</label>
+          </div>
+
+          <textarea type="text" onChange={onTextAreaHandler} />
         </div>
-<div className="d-grid">
-      <button type="submit">Submit</button>
-</div>
-    </form>
-  </div>
+        <div className="d-grid">
+          <button type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
   );
 }
 

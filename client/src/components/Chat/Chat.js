@@ -29,9 +29,9 @@ function Chat() {
       <div className="chatList">
         {chatList.map(({ name, message }, index) => (
           <div key={index}>
-            <h3>
+            <h4>
               {name}: <span>{message}</span>
-            </h3>
+            </h4>
           </div>
         ))}
       </div>
@@ -76,7 +76,7 @@ function Chat() {
   }, [change, listState]);
 
   return (
-    <div>
+    <div className="chatPage">
       <input
         value={room}
         onChange={(e) => {

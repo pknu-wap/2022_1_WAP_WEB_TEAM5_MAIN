@@ -14,14 +14,19 @@
     font-size: 30px;
     font-weight: 500;
 }
-
 .postPage input {
     width: 65%;
     margin : 10px;
     height: 30px;
     border :  1px    rgb(204, 204, 204);
 }
-
+.postListTop{
+    width:100%;
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-right:15px;
+}
 .postPage select{
     height: 30px;
     width : 30px ;
@@ -35,7 +40,12 @@
     height: 30px;
     width : 15% ;
     text-align-last: auto;
-
+    border-radius: 5px;
+}
+.postPage .postButton{
+  display:flex;
+  justify-content: flex-end;
+  padding-right:35px;
 }
 
 .postPage .postList{

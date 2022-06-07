@@ -1,3 +1,14 @@
+.registerPage{
+    display:flex;
+    justify-content: center;
+    margin-top: 10%;
+    margin-left:auto;
+    margin-right: auto;
+    width: 40%;
+    height: 700px;
+    background-color: white;;
+}
+
 .registerForm{
     display:flex;
     flex-direction: column;
