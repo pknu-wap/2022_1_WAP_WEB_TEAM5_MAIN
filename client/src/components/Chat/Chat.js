@@ -12,8 +12,10 @@ const socket = io.connect("http://localhost:5000");
 function Chat() {
   const location = useLocation();
   const state = location.state;
-  const username = state.name;
-  const [room, setRoom] = useState("");
+  console.log(state)
+  const hostName = state.host;
+  const guestName = state.guest;
+  const [room, setRoom] = useState(hostName);
   const [change, setChange] = useState(true);
   const [message, setMessage] = useState("");
   const [name, setName] = useState("");
@@ -45,9 +47,9 @@ function Chat() {
   };
 
   const sendMessage = async (e) => {
-    console.log(`sendMesssage: ${name} ${message} ${room}`);
-    socket.emit("send_message", { name: username, message, room });
-    let body = { name: username, message, room };
+    console.log(`sendMesssage: ${guestName} ${message} ${room}`);
+    socket.emit("send_message", { name: guestName, message, room });
+    let body = { name: guestName, message, room };
     await axios.post("/api/chat/post", body).then((res) => {
       if (!res.data.chatPostSuccess) {
         alert("대화 과정에서 문제가 발생했습니다.");
@@ -76,13 +78,13 @@ function Chat() {
   return (
     <div>
       <input
-        placeholder="Room Number..."
+        value={room}
         onChange={(e) => {
           setRoom(e.target.value);
         }}
       />
       <button onClick={joinRoom}>Join Room</button>
-      <input value={state.name} />
+      <input value={guestName} />
       <input
         value={message}
         placeholder="Message..."

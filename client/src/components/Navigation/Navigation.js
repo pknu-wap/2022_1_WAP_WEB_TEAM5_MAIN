@@ -8,7 +8,6 @@ import "./Navigation.css";
 
 function Navigation({ isAuth, name, isAdmin }) {
   const navigate = useNavigate();
-
   const [time, setTime] = useState(new Date());
   useEffect(() => {
     setInterval(() => {
@@ -36,7 +35,7 @@ function Navigation({ isAuth, name, isAdmin }) {
         <div className="navigation">
           <Link to="/">Home</Link>
           <Link to="/post">Post</Link>
-          <Link to="/calendar">Calender</Link>
+          <Link to="/calendar">Calendar</Link>
           <Link to="/mypage">MyPage</Link>
           <a href="/api/users/logout" onClick={onLogoutHandler}>
             Logout
@@ -57,7 +56,7 @@ function Navigation({ isAuth, name, isAdmin }) {
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div className="navigation">
         <Link to="/">Home</Link>
-        <Link to="/">Calender</Link>
+        <Link to="/calendar">Calendar</Link>
         <Link to="/login">Login</Link>
         <Link to="/signup">SignUp</Link>
         <span className="timeBar">

@@ -15,7 +15,7 @@ import OtherPage from "./components/Community/OtherPage";
 import PostDetailModi from "./components/Community/PostDetailModi";
 import AdminPage from "./components/Community/AdminPage";
 import Chat from "./components/Chat/Chat";
-import Test from "./Test";
+import Main from "./components/Calendar/Main";
 
 function App() {
   const [isAuth, setIsAuth] = useState(false);
@@ -37,7 +37,7 @@ function App() {
 
   return (
     <div className="App">
-      <Navigation isAuth={isAuth} isAdmin={isAdmin} />
+      <Navigation isAuth={isAuth} name={name} isAdmin={isAdmin} />
       <div className="routes">
         <Routes>
           <Route path="/" element={<Home />} />
@@ -52,6 +52,7 @@ function App() {
           <Route path="/mypage/modify" element={<MyPageModi />} />
           <Route path="/adminpage" element={<AdminPage />} />
           <Route path="/chatpage" element={<Chat />} />
+          <Route path="/calendar" element={<Main />} />
         </Routes>
       </div>
     </div>

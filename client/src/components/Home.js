@@ -11,7 +11,6 @@ function Home() {
         <ActiveUser />
         <PostList />
       </div>
-      <Main />
     </div>
   );
 }

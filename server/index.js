@@ -17,10 +17,21 @@ const http = require("http");
 const { Chat } = require("./models/chat");
 //const userRouter = require("./routers/user");
 const router = express.Router();
-//app.set('view engine', 'ejs');
 
-app.use(bodyparser.urlencoded({ extended: true }));
-app.use(bodyparser.json());
+
+let uuid = require("uuid");
+let multer = require("multer");
+const { errorMonitor } = require("events");
+///uuid.v4();
+
+app.use(
+  bodyparser.urlencoded({
+    limit: "50mb",
+    extended: true,
+    parameterLimit: 1000000,
+  })
+);
+app.use(bodyparser.json({ limit: "50mb", extended: true }));
 app.use(cookieParser()); //요청된 쿠키를 쉽게 추출할 수 있도록 도와주는 미들웨어, express 의 req 객체에 cookies 속성이 부여된다.
 
 mongoose
@@ -55,6 +66,53 @@ io.on("connection", (socket) => {
 server.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
+///////////////////////////////////////////////
+app.use(express.static("./public"));
+const DIR = "./public";
+
+const upload = multer({ dest: DIR });
+
+///////////////////////////////////////////////
+app.post("/api/post/post", upload.single("profileImg"), function (req, res) {
+  Index.find(
+    ({},
+    (err, array) => {
+      let index = array[0].postId;
+      let nextIndex = index + 1;
+      console.log(nextIndex);
+
+      const post = new Post({
+        index: nextIndex,
+        title: req.body.title,
+        name: req.user.name,
+        category: req.body.category,
+        textArea: req.body.textArea,
+      });
+
+      console.log(post);
+      post.save((err, postInfo) => {
+        console.log(`저장된 postInfo => ${postInfo}`);
+        if (err) {
+          return res.json({ postSuccess: false, err });
+        } else {
+          Index.findOneAndUpdate(
+            { postId: index },
+            { postId: nextIndex },
+            (err, info) => {
+              if (err) {
+                console.log(err);
+              } else {
+                console.log(info);
+              }
+            }
+          );
+          return res.status(200).json({ postSuccess: true });
+        }
+      });
+    })
+  );
+});
+
 ///////////////////////////////////////////////
 app.post("/api/chat/postlist", auth, (req, res) => {
   Chat.find({ room: req.body.room }, (err, chatList) => {
@@ -260,6 +318,18 @@ app.post("/api/post/commentlist", (req, res) => {
   });
 });
 ////////////////////////////////////////////////////////
+app.post("/api/post/search", (req, res) => {
+  Post.find(
+    { category: { $ne: "notice" }, title: { $regex: req.body.input } },
+    (err, searchList) => {
+      if (err) {
+        return res.json({ searchSuccess: false });
+      }
+      return res.json({ searchSuccess: true, searchList: searchList });
+    }
+  );
+});
+
 app.post("/api/post/delete", (req, res) => {
   //게시글에서 isMyPage 로 권한 확인했음
   Post.findOneAndDelete({ index: req.body.id }, (err, postInfo) => {
@@ -295,46 +365,6 @@ app.post("/api/post/modify", (req, res) => {
       }
       return res.json({ postDetailModiSuccess: true });
     }
-  );
-});
-
-app.post("/api/post/post", auth, (req, res) => {
-  Index.find(
-    ({},
-    (err, array) => {
-      let index = array[0].postId;
-      let nextIndex = index + 1;
-      console.log(nextIndex);
-
-      const post = new Post({
-        index: nextIndex,
-        title: req.body.title,
-        name: req.user.name,
-        category: req.body.category,
-        textArea: req.body.textArea,
-      });
-
-      console.log(post);
-      post.save((err, postInfo) => {
-        console.log(`저장된 postInfo => ${postInfo}`);
-        if (err) {
-          return res.json({ postSuccess: false, err });
-        } else {
-          Index.findOneAndUpdate(
-            { postId: index },
-            { postId: nextIndex },
-            (err, info) => {
-              if (err) {
-                console.log(err);
-              } else {
-                console.log(info);
-              }
-            }
-          );
-          return res.status(200).json({ postSuccess: true });
-        }
-      });
-    })
   );
 });
 

@@ -49,6 +49,22 @@ function PostList() {
     fetchData();
   }, []);
 
+  const onSearchHandler = async (e) => {
+    e.preventDefault();
+
+    //공지사항 + 검색 해당 게시글
+    const notice = await axios //카테고리와 무관하게 공지사항 가져옴
+      .post("/api/post/category", { category: "notice" })
+      .then((res) => res.data.postList);
+    const request = await axios
+      .post("/api/post/search", { input })
+      .then((res) => res.data.searchList);
+    if(request.length == 0){alert("검색결과가 존재하지 않습니다."); return;}
+    const tempArray = [];
+    const concatArray = tempArray.concat(notice, request);
+    setPostList(concatArray);
+  };
+
   return (
     <div className="postPage">
       <div className="listTitle">POSTLIST</div>
