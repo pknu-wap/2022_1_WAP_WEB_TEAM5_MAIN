@@ -137,12 +137,12 @@ function Main() {
           {viewYear}년 {viewMonth + 1}월
         </div>
         <div className="nav">
-          <button className="nav-button" onClick={onLastMonthHandler}>
-            Prev
+          <button className="nav-btn" onClick={onLastMonthHandler}>
+            이전
           </button>
-          <button className="nav-button">Today</button>
-          <button className="nav-button" onClick={onNextMonthHandler}>
-            Next
+          <button className="nav-btn">이 달</button>
+          <button className="nav-btn" onClick={onNextMonthHandler}>
+            다음
           </button>
         </div>
       </div>
