@@ -10,7 +10,6 @@ function PostList() {
   const [input, setInput] = useState("");
   const [isAuth, setIsAuth] = useState(false);
 
-
   const onCategoryHandler = async (e) => {
     e.preventDefault();
     let category = e.target.value;
@@ -59,7 +58,10 @@ function PostList() {
     const request = await axios
       .post("/api/post/search", { input })
       .then((res) => res.data.searchList);
-    if(request.length == 0){alert("검색결과가 존재하지 않습니다."); return;}
+    if (request.length == 0) {
+      alert("검색결과가 존재하지 않습니다.");
+      return;
+    }
     const tempArray = [];
     const concatArray = tempArray.concat(notice, request);
     setPostList(concatArray);
@@ -68,38 +70,44 @@ function PostList() {
   return (
     <div className="postPage">
       <div className="listTitle">POSTLIST</div>
-    <div className = "AD">
-      <select onChange={onCategoryHandler}>
-        <option value="all">All</option>
-        <option value="work out">Work out</option>
-        <option value="jogging">Jogging</option>
-        <option value="study">Study</option>
-        <option value="etc">Etc</option>
-      </select>
-      <span>
-        <input
-          type="text"
-          onChange={(e) => {
-            setInput(e.target.value);
-          }}
-          placeholder="제목으로 검색"
-        />
-        <button  className="btn btn-primary" onClick={onSearchHandler}>Search</button>
-        <button>
-          <Link
-            to="/post"
-            onClick={(e) => {
-              if (!isAuth) {
-                e.preventDefault();
-                alert("로그인이 필요합니다.");
-              }
+      <div className="AD">
+        <div className="postListTop">
+          {" "}
+          <select onChange={onCategoryHandler}>
+            <option value="all">All</option>
+            <option value="work out">Work out</option>
+            <option value="jogging">Jogging</option>
+            <option value="study">Study</option>
+            <option value="etc">Etc</option>
+          </select>
+          <input
+            type="text"
+            onChange={(e) => {
+              setInput(e.target.value);
             }}
-          >
-            Post
-          </Link>
-        </button>
-      </span>
-    </div>
+            placeholder="제목으로 검색"
+          />
+          <button className="btn btn-primary" onClick={onSearchHandler}>
+            Search
+          </button>
+        </div>
+
+        <div className="postButton">
+          <button>
+            <Link
+              to="/post"
+              onClick={(e) => {
+                if (!isAuth) {
+                  e.preventDefault();
+                  alert("로그인이 필요합니다.");
+                }
+              }}
+            >
+              Post
+            </Link>
+          </button>
+        </div>
+      </div>
       <div className="postList">
         {PostList &&
           PostList.map((post, index) => (

@@ -36,7 +36,7 @@ function Login() {
   };
 
   return (
-    <div>
+    <div className="loginPage">
       <form onSubmit={onSumitHandler} className="loginForm">
         <h1>Login</h1>
         <label>Email</label>

@@ -66,7 +66,6 @@ function MyPage() {
 
   return (
     <div>
-      <h3>Mypage</h3>
       {myPage.length ? (
         <div className="myPage">
           <div className="myPagePage">
@@ -80,7 +79,7 @@ function MyPage() {
             <div>{myPage[0].hobby}</div>
             <label>Comment</label>
             <div>{myPage[0].textArea}</div>
-            <button className="btn btn-primary">
+            <button>
               <Link
                 to="/mypage/modify"
                 state={{
