@@ -26,7 +26,7 @@ function ActiveUser() {
     <div className="userList">
       <div className="activeUserTitle">ActiveUser</div>
       <div>
-        <button onClick={onReloadHandler}>RELOAD</button>
+        <button className="btn btn-primary" onClick={onReloadHandler}>RELOAD</button>
       </div>
       {userList &&
         userList.map((user) => (
