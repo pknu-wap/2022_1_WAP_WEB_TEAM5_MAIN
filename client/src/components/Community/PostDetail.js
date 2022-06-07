@@ -58,21 +58,21 @@ function Detail() {
   return (
     <div className="postDetail">
       <div className="postInfo">
-        <h1>{state.title}</h1>
         <div>Category: {state.category}</div>
-        <div>Name: {state.name}</div>
-        <div>Content: {state.textArea}</div>
-        <div>최초로 작성한 날짜: {state.date}</div>
+        <div>작성일: {state.date}</div>
         {state.date !== state.modiDate && (
-          <div>마지막 수정한 날짜: {state.modiDate}</div>
+          <div>수정일: {state.modiDate}</div>
         )}
+        <div>작성자: {state.name}</div>
+        <h1>{state.title}</h1>
+        <div className="postContent">Content: {state.textArea}</div>
       </div>                                                                              
       {loginUser &&
         <Link to="/chatpage" state={{ host: state.name, guest: myName }}>
           채팅하기
         </Link>
       }
-      <div className="commentTitle">Comment</div>
+      <div className="commentTitle">댓글</div>
       <Comment id={state.id} />
       {isMyPost && (
         <div>
