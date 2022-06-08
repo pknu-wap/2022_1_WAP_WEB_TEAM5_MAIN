@@ -1,18 +1,25 @@
 .chatPage{
         width:50%;
-        height:700px;
+        height:600px;
         justify-content: center;
         margin:auto;
-        margin-top: 10%;
+        margin-top: 5%;
 }
-
 .chatList{
-        padding:15px;
+        padding:20px;
         display: flex;
         flex-direction: column;
-        height:600px;
+        height:80%;
         margin:30px;
         overflow:auto;
         background-color: white;
         border-radius: 5px;
+}
+.chatRight{
+        display:flex;
+        justify-content: flex-end;
+}
+.chatLeft{
+        display:flex;
+        justify-content: flex-start;
 }

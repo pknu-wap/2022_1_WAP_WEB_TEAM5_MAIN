@@ -3,13 +3,14 @@
 }
 .calendar {
   padding-top: 10px;
-  margin-top:5%;
+  margin-top:2%;
   margin-left:auto;
   margin-right:auto;
-  padding:50px;
+  padding:30px;
   width: 70%;
   height: 70%;
   background-color: white;
+  border-radius: 5px;
 }
 
 .header {
@@ -41,6 +42,7 @@
   line-height: 34px;
   background-color: #629bc4;
   cursor: pointer;
+  border-radius: 3px;
 }
 
 .go-today {
