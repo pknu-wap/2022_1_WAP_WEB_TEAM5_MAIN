@@ -41,6 +41,8 @@
     width : 15% ;
     text-align-last: auto;
     border-radius: 5px;
+    border-style:inset;
+    border-color:rgb(96, 96, 208);
 }
 .postPage .postButton{
   display:flex;

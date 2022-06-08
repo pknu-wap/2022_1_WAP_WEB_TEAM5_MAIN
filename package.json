@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/donghyuun/2022_1_WAP_WEB_TEAM5/issues"
   },
-  "homepage": "https://github.com/donghyuun/2022_1_WAP_WEB_TEAM5#readme"
+  "homepage": "https://github.com/donghyuun/2022_1_WAP_WEB_TEAM5#readme",
+  "dependencies": {
+    "bootstrap": "^5.1.3"
+  }
 }
