@@ -69,7 +69,7 @@ function PostList() {
 
   return (
     <div className="postPage">
-      <div className="listTitle">POSTLIST</div>
+      <div className="listTitle"><h1>DONGJEON</h1></div>
       <div className="AD">
         <div className="postListTop">
           {" "}
@@ -87,12 +87,9 @@ function PostList() {
             }}
             placeholder="제목으로 검색"
           />
-          <button className="btn btn-primary" onClick={onSearchHandler}>
+          <button onClick={onSearchHandler}>
             Search
           </button>
-        </div>
-
-        <div className="postButton">
           <button>
             <Link
               to="/post"

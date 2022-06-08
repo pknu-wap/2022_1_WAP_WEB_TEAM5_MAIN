@@ -62,7 +62,7 @@ function Detail() {
           <div>마지막 수정한 날짜: {state.modiDate}</div>
         )}
       </div>
-      {isAuth && <Link to="/chatpage" state={{host: state.name, guest:guestName}}>Chat</Link>}
+      {isAuth && <Link className="chat" to="/chatpage" state={{host: state.name, guest:guestName}}>Chat</Link>}
       <div className="commentTitle">Comment</div>
       <Comment id={state.id} />
       {isMyPost && (

@@ -21,7 +21,7 @@ function Detail({ posts, date }) {
       {posts.map((post) => {
         return (
           <div>
-            {post.name}
+            {post.name}[{post.category}]
           </div>
         );
       })}

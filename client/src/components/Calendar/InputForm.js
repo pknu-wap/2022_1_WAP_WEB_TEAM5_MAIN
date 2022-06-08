@@ -53,6 +53,7 @@ function InputForm({ form, setFormHandler }) {
   const onCategoryHandler = (e) => {
     e.preventDefault();
     setCategory(e.target.value);
+    console.log(category)
   };
   const onTitleHandler = (e) => {
     e.preventDefault();

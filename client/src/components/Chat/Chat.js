@@ -29,16 +29,18 @@ function Chat() {
       <div className="chatList">
         {chatList.map(({ name, message }, index) => {if(name==guestName){return (
           <div className="chatRight" key={index}>
-            <h4>
+            <span className="chatRight2"><h4>
               {name}: <span>{message}</span>
-            </h4>
+            </h4></span>
+            
           </div>
         )}else{
           return (
             <div className="chatLeft" key={index}>
-              <h4>
+              <span className="chatLeft2"><h4>
                 {name}: <span>{message}</span>
-              </h4>
+              </h4></span>
+              
             </div>
           )
         }})}
@@ -101,7 +103,7 @@ function Chat() {
           setMessage(e.target.value);
         }}
       />
-      <button onClick={sendMessage}>Send Message</button>
+      <button onClick={sendMessage}>SUBMIT</button>
     </div>
   );
 }

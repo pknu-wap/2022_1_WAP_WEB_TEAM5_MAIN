@@ -37,10 +37,6 @@ function Post() {
       category,
       textArea,
     };
-    const formData = new FormData();
-    formData.append("profileImg", file);
-    axios.post("/api/post/post", formData, {});
-    /*
     dispatch(postPost(body)).then((res) => {
       console.log(res);
       if (res.payload.payload.postSuccess) {
@@ -51,7 +47,6 @@ function Post() {
         alert("게시글 작성에 실패했습니다.");
       }
     });
-    */
   };
   useEffect(() => {
     axios.get("/api/users/auth").then((res) => {
@@ -62,8 +57,8 @@ function Post() {
   });
   return (
     <div className="postFormPage">
-      <h3>POST</h3>
       <form className="postForm" onSubmit={onSubmitHandler}>
+        <h3>POST</h3>
         <div className="mb-3">
           <div>
             <label>Category</label>

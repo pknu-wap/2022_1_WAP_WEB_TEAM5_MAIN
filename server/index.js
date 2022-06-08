@@ -18,7 +18,6 @@ const { Chat } = require("./models/chat");
 //const userRouter = require("./routers/user");
 const router = express.Router();
 
-
 let uuid = require("uuid");
 let multer = require("multer");
 const { errorMonitor } = require("events");
@@ -71,9 +70,14 @@ app.use(express.static("./public"));
 const DIR = "./public";
 
 const upload = multer({ dest: DIR });
+////////////////////////////////////////////////
+/*
+const mailController = require('./Email/Email');
 
+app.post("/api/users/register/email", mailController);
+*/
 ///////////////////////////////////////////////
-app.post("/api/post/post", upload.single("profileImg"), function (req, res) {
+app.post("/api/post/post", auth, function (req, res) {
   Index.find(
     ({},
     (err, array) => {
@@ -162,10 +166,11 @@ app.get("/api/calendar/post", (req, res) => {
 });
 
 app.post("/api/calendar/post", auth, (req, res) => {
+  console.log(req.body)
   const Calbody = new CalPost({
     name: req.user.name,
     startDate: req.body.date,
-    category: req.body.categorym,
+    category: req.body.category,
     title: req.body.title,
     textArea: req.body.textArea,
   });
@@ -274,7 +279,9 @@ app.get("/api/users/userlist", (req, res) => {
         message: "유저리스트를 불러오는 과정에서 문제가 발생했습니다.",
       });
     }
-    userList = userList.filter((value) => value.token.length > 0);
+    userList = userList.filter(
+      (value) => value.token && value.token.length > 0
+    );
     return res.json({
       activeUserList: userList,
     });

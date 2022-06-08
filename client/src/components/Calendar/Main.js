@@ -150,7 +150,6 @@ function Main() {
       <div>
         {form && <div className="inputForm"><InputForm form={form} setFormHandler={setFormHandler} /></div>}
       </div>
-
       <div className="days">
         <div className="day">일</div>
         <div className="day">월</div>
