@@ -27,13 +27,21 @@ function Chat() {
   const renderChat = () => {
     return (
       <div className="chatList">
-        {chatList.map(({ name, message }, index) => (
-          <div key={index}>
+        {chatList.map(({ name, message }, index) => {if(name==guestName){return (
+          <div className="chatRight" key={index}>
             <h4>
               {name}: <span>{message}</span>
             </h4>
           </div>
-        ))}
+        )}else{
+          return (
+            <div className="chatLeft" key={index}>
+              <h4>
+                {name}: <span>{message}</span>
+              </h4>
+            </div>
+          )
+        }})}
       </div>
     );
   };
@@ -84,6 +92,7 @@ function Chat() {
         }}
       />
       <button onClick={joinRoom}>Join Room</button>
+      {renderChat()}
       <input value={guestName} />
       <input
         value={message}
@@ -92,7 +101,7 @@ function Chat() {
           setMessage(e.target.value);
         }}
       />
-      <button onClick={sendMessage}>Send Message</button>{renderChat()}
+      <button onClick={sendMessage}>Send Message</button>
     </div>
   );
 }
