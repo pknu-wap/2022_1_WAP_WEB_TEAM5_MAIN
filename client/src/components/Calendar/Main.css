@@ -3,7 +3,7 @@
 }
 .calendar {
   padding-top: 10px;
-  margin-top:2%;
+  margin-top:3%;
   margin-left:auto;
   margin-right:auto;
   padding:30px;
@@ -22,7 +22,6 @@
 .year-month {
   font-size: 35px;
   color: rgb(0, 0, 0);
-  padding-top: 10px;
   padding-left: 10px;
 }
 
