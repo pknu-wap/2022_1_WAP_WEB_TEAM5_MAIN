@@ -1,11 +1,11 @@
 .post{
     background-color: white;
-    margin: 20px;
+    padding-top: 100px;
+    margin-top: 0px;
     border-radius: 5px; 
     border : 3px ;
     display: flex;
     padding:7px;
-
 }
 .post .postCategory{
     width: 13%;

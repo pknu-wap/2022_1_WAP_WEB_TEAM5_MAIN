@@ -99,7 +99,7 @@ function MyPage() {
         
         <div className="myPage">
           <div className="myPagePage">
-            <div>자기소개를 등록해주세요.</div>
+            <div>💙자기소개를 등록해주세요💙</div>
             <label>Name</label>
             <div className = "mypageLabel">{loginUser.name}</div>
             <label>Age</label>

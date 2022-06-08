@@ -92,7 +92,7 @@ function Post() {
           <textarea type="text" onChange={onTextAreaHandler} />
         </div>
         <div className="d-grid">
-          <button type="submit">Submit</button>
+          <button type="btn btn-primary">Submit</button>
         </div>
       </form>
     </div>
