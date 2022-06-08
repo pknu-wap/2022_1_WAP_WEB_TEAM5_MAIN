@@ -109,7 +109,7 @@ function MyPage() {
               <input type="text" className="form-control" onChange={onHobbyHandler} />
               <h2>Comment</h2>
               <textarea type="text" className="form-control" onChange={onTextAreaHandler} />
-              <button className="btn btn-primary" type="submit">Submit</button>
+              <button type="submit">Submit</button>
             </form>
           </div>
         </div>

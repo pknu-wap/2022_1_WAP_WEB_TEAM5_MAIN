@@ -30,10 +30,11 @@
 
 .nav-btn {
   margin-right: 5px;
-  width: 55px;
+  width: 60px;
   height: 30px;
   color:#ffff;
-  border-style: none;
+  border-style: outset;
+  border-color: #98c1de;
   align-items: center;
   font-size: 16px;
   line-height: 34px;
@@ -100,3 +101,4 @@ border-radius: 3px;
 background-color: #629bc4;
 color:white;
 border: none;}
+}
