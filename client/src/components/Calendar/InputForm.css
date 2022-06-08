@@ -1,6 +1,10 @@
 .container{
     width: 350px;
     height: 400px;
+    border-width:3px;
+    background-color: #3090d0;
+    border-style: outset;
+    border-color: #98bad3;
 }
 .calPostForm{
     height: 100%;;
@@ -13,10 +17,23 @@
 }
 .calPostForm textarea{
     height: 100px;
+    margin-bottom: 20px;
+    border-width:2px;
+    background-color: #ffffff;
+    border-style: inset;
+    border-color: rgb(198, 198, 243);
 }
 .calPostForm select{
     height:25px;
+    border-width:2px;
+    background-color: #ffffff;
+    border-style: inset;
+    border-color: rgb(198, 198, 243);
 }
 .calPostForm input{
     height:25px;
+    border-width:2px;
+    background-color: #ffffff;
+    border-style: inset;
+    border-color: rgb(198, 198, 243);
 }

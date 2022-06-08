@@ -1,10 +1,8 @@
 .myPage{
-    margin:auto;
-    margin-top: 30px;
     color:black;
-    width: 500px;
+    width: 60%;
     height: 600px;
-    background-color: lightgray;
+    background-color: aliceblue;
     display:flex;
     flex-direction: column;
     padding:15px;
@@ -21,32 +19,43 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
 }
 .myPagePage label{
-    font-weight: 600;
-    font-size: 25px;
-    margin-bottom: 7px;
-    margin-top: 10px;
+    font-weight: 100;
+    size: 15px;
+    margin-bottom: 3px;
+    margin-top: 5px;
 }
 .myPagePage select{
     height: 25px;
+    font-size:5px;
 }
 .myPagePage input{
     height:20px;
     width: 70%;
-    border-style: none;
+    border-width:2px;
+    background-color: #98bad3;
+    border-style: inset;
+    border-color: rgb(198, 198, 243);
 }
 .myPagePage textarea{
     height: 100px;
     width:70%;
     margin-bottom: 10px;
-    border-style: none;
+    border-width:2px;
+    background-color: #98bad3;
+    border-style: inset;
+    border-color: rgb(198, 198, 243);
 }
 .myPagePage button{
     margin-top: 20px;
     height:30px;
-    border-style: none;
     cursor: pointer;
+    border-width:2px;
+    background-color: #98bad3;
+    border-style: outset;
+    border-color: rgb(198, 198, 243);
 }
 
 .infoForm{
@@ -54,4 +63,7 @@
     flex-direction: column;
     width:70%;
     margin: auto;
+    background-color: #98bad3;
+    border-style: outset;
+    border-color: rgb(198, 198, 243);
 }

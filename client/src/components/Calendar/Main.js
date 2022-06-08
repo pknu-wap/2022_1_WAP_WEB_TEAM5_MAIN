@@ -138,11 +138,11 @@ function Main() {
         </div>
         <div className="nav">
           <button className="nav-btn" onClick={onLastMonthHandler}>
-            이전
+            이 전
           </button>
           <button className="nav-btn">이 달</button>
           <button className="nav-btn" onClick={onNextMonthHandler}>
-            다음
+            다 음
           </button>
         </div>
       </div>
