@@ -1,8 +1,14 @@
 .myPage{
     color:black;
+<<<<<<< HEAD
     width: 60%;
     height: 600px;
     background-color: aliceblue;
+=======
+    width: 500px;
+    height: 70%;
+    background-color: lightgray;
+>>>>>>> a6bbb1b43966e2f69ff5e576e4469eec66cc879f
     display:flex;
     flex-direction: column;
     padding:15px;
@@ -52,10 +58,14 @@
     margin-top: 20px;
     height:30px;
     cursor: pointer;
+<<<<<<< HEAD
     border-width:2px;
     background-color: #98bad3;
     border-style: outset;
     border-color: rgb(198, 198, 243);
+=======
+    color:white;
+>>>>>>> a6bbb1b43966e2f69ff5e576e4469eec66cc879f
 }
 
 .infoForm{
