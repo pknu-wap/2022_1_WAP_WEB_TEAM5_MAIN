@@ -1,35 +1,31 @@
 .postFormPage{
-    margin-top: 20px;
+    margin-top: 3%;
     box-sizing: border-box;
 }
-
 .postForm{
+    border-radius: 5px;
     justify-content: center;
-    padding : 10px;
+    padding : 30px;
     background-color: white;
     display: flex;
     justify-content: center;
     flex-direction: column;
-    width:70%;
+    width:35%;
     height:600px;
     margin:auto;
 }
 .postForm input{
+    width: 70%;
     height: 30px;
     margin-bottom:15px;
     margin-top:5px;
-    width: 500px;
-    border-width:3px;
-    background-color: #98bad3;
-    border-style: inset;
-    border-color: rgb(198, 198, 243);
 }
 
 .postForm select{
     height: 37px;
     margin-bottom:10px;
     margin-top:5px;
-    width: 500px;
+    width: 70%;
     border-width:3px;
     background-color: #98bad3;
     border-style: inset;
@@ -51,8 +47,8 @@
 }
 
 .postForm textarea{
-    height: 250px;
-    width: 500px;
+    width: 70%;
+    height: 200px;
     margin-top:5px;
     margin-bottom:10px;
     border-width:3px;

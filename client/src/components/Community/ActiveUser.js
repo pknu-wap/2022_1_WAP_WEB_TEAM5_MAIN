@@ -26,11 +26,11 @@ function ActiveUser() {
     <div className="userList">
       <div className="activeUserTitle">ActiveUser</div>
       <div>
-        <button className="btn btn-primary" onClick={onReloadHandler}>RELOAD</button>
+        <button onClick={onReloadHandler}>RELOAD</button>
       </div>
       {userList &&
         userList.map((user) => (
-          <div className="list-group-item d-flex justify-content-between align-items-center">
+          <div className="user">
             <Link
               className="postName"
               to={{ pathname: `/mypage/${user.name}` }}

@@ -1,18 +1,15 @@
 *{
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 .calendar {
-  padding-top: 10px;
-  margin-top:3%;
+  margin-top:1%;
   margin-left:auto;
   margin-right:auto;
-  padding:30px;
+  padding:20px;
   width: 70%;
-  height: 70%;
   background-color: white;
   border-radius: 5px;
 }
-
 .header {
   display: flex;
   justify-content: space-between;
@@ -61,7 +58,7 @@
 .dates{
     display:flex;
     flex-wrap: wrap;
-    height:500px;
+    height:470px;
     border:1px solid #000000;
 }
 .date{
@@ -84,22 +81,21 @@
 .inputForm{
   width:350px;
   height:400px;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(34, 114, 146, 0.8);
+  border-radius: 5px;
   color:white;
   position: absolute;
+  left:40%;
   display:flex;
   justify-content: center;
   align-items: center;
 }
-
 .buttonContainer{
   display:flex;
   flex-direction: row-reverse;
 }
 .inputButton{
-  border-radius: 5px;
-  border-width:3px;
-  background-color: #98bad3;
-  border-style: outset;
-  border-color: aliceblue;
-}
+  border-radius: 3px;
+  background-color: #629bc4;
+  color:white;
+  border: none;}

@@ -18,7 +18,6 @@ const { Chat } = require("./models/chat");
 //const userRouter = require("./routers/user");
 const router = express.Router();
 
-
 let uuid = require("uuid");
 let multer = require("multer");
 const { errorMonitor } = require("events");
@@ -66,14 +65,8 @@ io.on("connection", (socket) => {
 server.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
-///////////////////////////////////////////////
-app.use(express.static("./public"));
-const DIR = "./public";
 
-const upload = multer({ dest: DIR });
-
-///////////////////////////////////////////////
-app.post("/api/post/post", upload.single("profileImg"), function (req, res) {
+app.post("/api/post/post", auth, function (req, res) {
   Index.find(
     ({},
     (err, array) => {
@@ -165,7 +158,7 @@ app.post("/api/calendar/post", auth, (req, res) => {
   const Calbody = new CalPost({
     name: req.user.name,
     startDate: req.body.date,
-    category: req.body.categorym,
+    category: req.body.category,
     title: req.body.title,
     textArea: req.body.textArea,
   });
@@ -274,7 +267,9 @@ app.get("/api/users/userlist", (req, res) => {
         message: "유저리스트를 불러오는 과정에서 문제가 발생했습니다.",
       });
     }
-    userList = userList.filter((value) => value.token.length > 0);
+    userList = userList.filter(
+      (value) => value.token && value.token.length > 0
+    );
     return res.json({
       activeUserList: userList,
     });
@@ -439,6 +434,10 @@ app.post("/api/users/register", (req, res) => {
     return res.status(200).json({ registerSuccess: true });
   });
 });
+
+const mailController = require('./Email/Email');
+
+app.post("/api/users/register/email", mailController);
 
 app.post("/api/users/login", (req, res) => {
   console.log(req.body);

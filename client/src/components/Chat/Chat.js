@@ -12,7 +12,7 @@ const socket = io.connect("http://localhost:5000");
 function Chat() {
   const location = useLocation();
   const state = location.state;
-  console.log(state)
+  console.log(state);
   const hostName = state.host;
   const guestName = state.guest;
   const [room, setRoom] = useState(hostName);
@@ -27,21 +27,27 @@ function Chat() {
   const renderChat = () => {
     return (
       <div className="chatList">
-        {chatList.map(({ name, message }, index) => {if(name==guestName){return (
-          <div className="chatRight" key={index}>
-            <h4>
-              {name}: <span>{message}</span>
-            </h4>
-          </div>
-        )}else{
-          return (
-            <div className="chatLeft" key={index}>
-              <h4>
-                {name}: <span>{message}</span>
-              </h4>
-            </div>
-          )
-        }})}
+        {chatList.map(({ name, message }, index) => {
+          if (name == guestName) {
+            return (
+              <div className="chatRight" key={index}>
+                <span className="chatRight2">
+                  <h4>
+                    {name}: <span>{message}</span>
+                  </h4>
+                </span>
+              </div>
+            );
+          } else {
+            return (
+              <div className="chatLeft" key={index}>
+                <h4>
+                  {name}: <span>{message}</span>
+                </h4>
+              </div>
+            );
+          }
+        })}
       </div>
     );
   };

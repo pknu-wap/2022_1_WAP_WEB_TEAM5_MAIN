@@ -4,8 +4,8 @@
     height:200px;
     margin-bottom: 20px;
     overflow:auto;
-    background-color: white;
-    border-radius: 5px;
+    border:1px solid #98bad3;
+    border-radius: 3px
 }
 
 .commentList .comment{
