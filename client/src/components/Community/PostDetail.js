@@ -62,7 +62,7 @@ function Detail() {
         <h1>{state.title}</h1>
         <div className="postContent">Content: {state.textArea}</div>                                                                  
       </div>
-      {isAuth && <Link to="/chatpage" state={{host: state.name, guest:guestName}}>Chat</Link>}
+      {isAuth && <Link className="chat" to="/chatpage" state={{host: state.name, guest:guestName}}>Chat</Link>}
       <div className="commentTitle">Comment</div>
       <Comment id={state.id} />
       {isMyPost && (

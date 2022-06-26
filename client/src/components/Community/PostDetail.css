@@ -1,27 +1,30 @@
 .postDetail {
     margin:auto;
-    margin-top: 10%;
+    margin-top: 2%;
     color:black;
-    width: 70%;
-    height: 450px;
-    background-color: #ffffff;
+    width: 40%;
+    height: 65%;
+    display:flex;
+    justify-content: flex-start;
+    background-color: white;
     display:flex;
     flex-direction: column;
     padding:15px;
     border-radius: 5px;
 }
-
-
+.postDetail div{
+    border-radius: 3px;
+}
 .postDetail .commentTitle{
-    font-size: 15px;
-    margin-bottom: 5px;
-    margin-top:10px;
-    width: 30px;
-    text-align: left;
+    border-radius: 3px;
+    border:1px solid #629bc4;
+    font-size: 20px;
+    margin-bottom: 10px;
+    margin-top:13px;
 }
 
-
 .postDetail .postInfo div{
+    border:1px solid #629bc4;
     font-size: 10px;
     margin-top: 5px;
     text-align: left;
@@ -38,11 +41,25 @@
 }
 
 .postDetail input{
-    border-style: none;
+    border:1px solid #629bc4;
+    border-radius: 3px;
     margin-bottom: 10px;
 }
 .postDetail button{
+    background-color: #98bad3;
+    color:white;
     border-style: none;
+    border-radius: 3px;
     cursor: pointer;
+    margin-right:3px;
     height: 23px;
+}
+.chat{
+    font-size: 20px;
+    color:#629bc4;
+    text-decoration: none;
+}
+.postDetail button a{
+    text-decoration: none;
+    color:white;
 }

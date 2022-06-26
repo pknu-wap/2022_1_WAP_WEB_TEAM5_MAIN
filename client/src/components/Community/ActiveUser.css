@@ -4,7 +4,7 @@
     margin:20px;
     height: 600px;
     padding:20px;
-    background-color: aliceblue;
+    background-color: white;
     border-radius: 5px;
 }
 
@@ -21,9 +21,13 @@
     width: 100%;
     border-radius: 5px;
     border-style: none;
+    color:black;
+    background-color: #98bad3;
     cursor: pointer;
 }
-
+.userList button:hover{
+    color: white;
+}
 .userList .user{
     display: flex;
     flex-direction: column;
@@ -31,10 +35,12 @@
     height:30px;
     margin-bottom: 20px;
     padding-bottom: 3px;
-    background-color: rgb(217, 217, 255);
+    background-color: #98bad3;
     border-radius: 5px;
 }
-
+.userList .user a{
+    color:black;
+}
 .user a{
     text-decoration: none;
     color:black;

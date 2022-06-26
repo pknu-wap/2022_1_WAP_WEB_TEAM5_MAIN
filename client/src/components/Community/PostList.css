@@ -1,9 +1,9 @@
 .postPage {
     width : 90%;
-    margin-top: 20px;
+    margin-top: 3%;
     color:black;
     height: 600px;
-    background-color: aliceblue;
+    background-color: white;
     display:flex;
     flex-direction: column;
     padding:15px;
@@ -18,7 +18,8 @@
     width: 65%;
     margin : 10px;
     height: 30px;
-    border :  1px    rgb(204, 204, 204);
+    border-radius: 3px;
+    border: 3px solid #629bc4;
 }
 .postListTop{
     width:100%;
@@ -26,14 +27,23 @@
     justify-content: space-around;
     align-items: center;
     padding-right:15px;
+    margin-bottom: 30px;
+}
+.postListTop a{
+    color:black;
+    text-decoration: none;
+}
+.postListTop a:hover{
+    color: #629bc4;
 }
 .postPage select{
     height: 30px;
     width : 30px ;
     border-radius: 2px;
     width:80px;
-
-    border-style: none;
+    border-radius: 3px;
+    border: 3px solid #629bc4;
+    cursor: pointer;
 }
 
 .postPage button {
@@ -44,12 +54,12 @@
     border-style:inset;
     border-color:rgb(96, 96, 208);
 }
-.postPage .postButton{
-  display:flex;
-  justify-content: flex-end;
-  padding-right:35px;
+.postPage button:hover{
+    color: #629bc4;
 }
 
 .postPage .postList{
     overflow-y: scroll;
+    border:3px solid #98bad3;
+    border-radius: 3px;
 }
