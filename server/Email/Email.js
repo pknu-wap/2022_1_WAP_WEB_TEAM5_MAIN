@@ -1,5 +1,4 @@
 const nodemailer = require('nodemailer');
-
 module.exports = async (req, res, next) => {
   const {  name, email, num } = req.body; // 보낼 이메일 주소, 이메일 제목, 이메일 본문, 받는 사람 이름
   try {
@@ -10,15 +9,15 @@ module.exports = async (req, res, next) => {
       port: 587,
       secure: false,
       auth: {
-        user: "", // 보내는 사람의 구글계정 메일 
-        pass: "", // 보내는 사람의 구글계정 비밀번호 (또는 생성한 앱 비밀번호)
+        user: "bomul0524@pukyong.ac.kr", // 보내는 사람의 구글계정 메일 
+        pass: "qnrudqlqjsehdgus@", // 보내는 사람의 구글계정 비밀번호 (또는 생성한 앱 비밀번호)
       },
     });
     
     // 보낼 메세지
     let message = {
       from: "bomul0524@pukyong.ac.kr", // 보내는 사람
-      to: `닉네임<"">`, // 받는 사람 이름과 이메일 주소
+      to: `닉네임<${email}>`, // 받는 사람 이름과 이메일 주소
       subject: "(WEB TEAM 5) 부경대학교 학생 인증 메일입니다.", // 메일 제목
       html: `<div
       style="
