@@ -99,7 +99,7 @@ function MyPage() {
         
         <div className="myPage">
           <div className="myPagePage">
-            <div>자기소개를 등록해주세요.</div>
+            <div>💙자기소개를 등록해주세요💙</div>
             <label>Name</label>
             <div className = "mypageLabel">{loginUser.name}</div>
             <label>Age</label>
@@ -109,7 +109,7 @@ function MyPage() {
               <input type="text" className="form-control" onChange={onHobbyHandler} />
               <h2>Comment</h2>
               <textarea type="text" className="form-control" onChange={onTextAreaHandler} />
-              <button className="btn btn-primary" type="submit">Submit</button>
+              <button type="submit">Submit</button>
             </form>
           </div>
         </div>

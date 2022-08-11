@@ -1,5 +1,5 @@
 *{
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 .calendar {
   margin-top:1%;
@@ -10,7 +10,6 @@
   background-color: white;
   border-radius: 5px;
 }
-
 .header {
   display: flex;
   justify-content: space-between;
@@ -20,7 +19,6 @@
 .year-month {
   font-size: 35px;
   color: rgb(0, 0, 0);
-  padding-top: 10px;
   padding-left: 10px;
 }
 
@@ -31,10 +29,11 @@
 
 .nav-btn {
   margin-right: 5px;
-  width: 55px;
+  width: 60px;
   height: 30px;
   color:#ffff;
-  border-style: none;
+  border-style: outset;
+  border-color: #98c1de;
   align-items: center;
   font-size: 16px;
   line-height: 34px;
@@ -91,7 +90,6 @@
   justify-content: center;
   align-items: center;
 }
-
 .buttonContainer{
   display:flex;
   flex-direction: row-reverse;

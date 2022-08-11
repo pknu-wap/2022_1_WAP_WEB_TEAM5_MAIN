@@ -12,7 +12,7 @@ const socket = io.connect("http://localhost:5000");
 function Chat() {
   const location = useLocation();
   const state = location.state;
-  console.log(state)
+  console.log(state);
   const hostName = state.host;
   const guestName = state.guest;
   const [room, setRoom] = useState(hostName);

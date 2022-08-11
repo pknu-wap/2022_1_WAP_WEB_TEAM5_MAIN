@@ -90,8 +90,8 @@ function InputForm({ form, setFormHandler }) {
         />
         <label>Content</label>
         <textarea type="text" onChange={onTextAreaHandler} />
-        <button>SUBMIT</button>
-        <button onClick={()=> setFormHandler(false)}>ClOSE</button>
+        <button className="btn btn-secondary">SUBMIT</button>
+        <button className="btn btn-secondary" onClick={()=> setFormHandler(false)}>ClOSE</button>
       </form>
     </div>
   );

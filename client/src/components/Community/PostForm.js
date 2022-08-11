@@ -71,14 +71,12 @@ function Post() {
             <option value="study">Study</option>
           </select>
         </div>
-
         <div className="mb-3">
           <div>
             <label>Title</label>
           </div>
           <input type="text" onChange={onTitleHandler} />
         </div>
-
         <div className="mb-3">
           <div>
             <label>TextArea</label>
@@ -87,7 +85,7 @@ function Post() {
           <textarea type="text" onChange={onTextAreaHandler} />
         </div>
         <div className="d-grid">
-          <button type="submit">Submit</button>
+          <button type="btn btn-primary">Submit</button>
         </div>
       </form>
     </div>

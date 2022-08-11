@@ -12,7 +12,9 @@
     padding:15px;
     border-radius: 5px;
 }
-
+.postDetail div{
+    border-radius: 3px;
+}
 .postDetail .commentTitle{
     border-radius: 3px;
     border:1px solid #629bc4;
@@ -22,6 +24,7 @@
 }
 .postDetail div{
     border-radius: 3px;
+
 }
 .postDetail .postInfo div{
     border:1px solid #629bc4;
@@ -33,7 +36,7 @@
     border:1px solid #629bc4;
     border-radius: 3px;
     height: 20px;
-    margin-bottom: 10px;
+
 }
 .postDetail button{
     background-color: #98bad3;

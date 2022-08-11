@@ -58,11 +58,13 @@ function Register() {
     let numArray = new Uint16Array(1);
     window.crypto.getRandomValues(numArray);
     setCheckNum(numArray[0]);
+
     let body = {
       name,
       email,
       num: numArray[0],
     };
+
     axios.post("/api/users/register/email", body);
     alert("인증메일이 발송되었습니다. 메일을 확인해주세요.");
   };
