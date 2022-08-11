@@ -4,6 +4,7 @@ counter_reducer
 
 Counter
 
+Email.js
 # dependencies
 /node_modules
 /.pnp

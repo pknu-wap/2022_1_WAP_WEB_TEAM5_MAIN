@@ -24,7 +24,7 @@ function ActiveUser() {
   };
   return (
     <div className="userList">
-      <div className="activeUserTitle">ActiveUser</div>
+      <div className="activeUserTitle">USER</div>
       <div>
         <button onClick={onReloadHandler}>RELOAD</button>
       </div>

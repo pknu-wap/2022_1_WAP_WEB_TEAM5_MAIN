@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import "./Register.css";
@@ -17,7 +17,7 @@ function Register() {
   const [checkNum, setCheckNum] = useState();
   const [password, setPassword] = useState();
   const [confirmPassword, setConfirmPassword] = useState();
-  
+
   const onAgeHandler = (e) => {
     e.preventDefault();
     setAge(e.target.value);
@@ -58,13 +58,13 @@ function Register() {
     let numArray = new Uint16Array(1);
     window.crypto.getRandomValues(numArray);
     setCheckNum(numArray[0]);
-    console.log(checkNum);
+
     let body = {
       name,
       email,
       num: numArray[0],
     };
-    console.log(body);
+
     axios.post("/api/users/register/email", body);
     alert("인증메일이 발송되었습니다. 메일을 확인해주세요.");
   };
@@ -111,7 +111,7 @@ ex) 이메일 또는 닉네임 중복, 비밀번호 최소 5자 이상, 닉네�
     <div className="registerPage">
       <form className="registerForm" onSubmit={onSubmitHandler}>
         <h1>Register</h1>
-        <div>회원가입 후 name 과  gender 는 수정이 불가합니다.</div>
+        <div>회원가입 후 name 과 gender 는 수정이 불가합니다.</div>
         <label>Gender</label>
         <select onChange={onGenderHandler}>
           <option value="male">male</option>

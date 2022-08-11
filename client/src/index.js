@@ -16,10 +16,7 @@ import counterReducer from "./components/features/counter_reducer";
 const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
 
-const store = configureStore({reducer: Reducer});
-
-
-
+const store = configureStore({reducer: Reducer});//Reducer = 루트리듀서
 
 root.render(
   <Provider store={store}>

@@ -22,28 +22,21 @@
     margin-bottom: 10px;
     margin-top:13px;
 }
+.postDetail div{
+    border-radius: 3px;
 
+}
 .postDetail .postInfo div{
     border:1px solid #629bc4;
-    font-size: 10px;
-    margin-top: 5px;
-    text-align: left;
-}
-
-.postDetail .postInfo .postContent{
-    font-size: 15px;
-    margin-top: 5px;
-    height: 50px;
-    background-color: #bad0e0;
-    border-style: inset;
-    text-align: left;
-
+    font-size: 20px;
+    margin-top: 10px;
 }
 
 .postDetail input{
     border:1px solid #629bc4;
     border-radius: 3px;
-    margin-bottom: 10px;
+    height: 20px;
+
 }
 .postDetail button{
     background-color: #98bad3;

@@ -45,18 +45,24 @@
     border: 3px solid #629bc4;
     cursor: pointer;
 }
+.postPage select:hover{
+    color: #629bc4;
+}
+
 
 .postPage button {
     height: 30px;
     width : 15% ;
     text-align-last: auto;
+    background-color: white;
     border-radius: 5px;
-    border-style:inset;
-    border-color:rgb(96, 96, 208);
+    border:3px solid #629bc4;
+
 }
 .postPage button:hover{
     color: #629bc4;
 }
+
 
 .postPage .postList{
     overflow-y: scroll;

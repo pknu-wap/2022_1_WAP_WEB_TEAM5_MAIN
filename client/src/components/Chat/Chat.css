@@ -19,6 +19,11 @@ h4{
         margin:0px;
         font-size: 22px;
 }
+
+.chatRight{
+        display:flex;
+        justify-content: flex-end;
+}
 .chatRight2{
         background-color:white;
         display:flex;
@@ -27,10 +32,6 @@ h4{
         padding:3px;
         border-radius: 5px;
         border: 1px solid #629bc4;
-}
-.chatRight{
-        display:flex;
-        justify-content: flex-end;
 }
 .chatLeft{
         display:flex;

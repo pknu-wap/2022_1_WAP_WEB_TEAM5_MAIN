@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Modal.css";
 
 function Modal({ posts, closeModal, modalState }) {
+  console.log(posts)
   return (
     <div>
       {modalState ? (

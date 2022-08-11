@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Login.css";
 import { useDispatch } from "react-redux";
-import { loginUser } from "../../_actions/user_action.js";
+import { loginUser } from "../../_reducers/userSlice";
 import { useNavigate } from "react-router-dom";
 function Login() {
   const dispatch = useDispatch();
@@ -24,8 +24,7 @@ function Login() {
       password,
     };
     dispatch(loginUser(body)).then((res) => {
-      console.log(res);
-      if (res.payload.payload.loginSuccess) {
+      if (res.payload.loginSuccess) {
         alert("로그인에 성공하였습니다.")
         navigate("/");
         window.location.reload();

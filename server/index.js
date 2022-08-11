@@ -66,6 +66,15 @@ server.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
 
+//const upload = multer({ dest: DIR });
+////////////////////////////////////////////////
+
+const mailController = require("./Email/Email");
+
+app.post("/api/users/register/email", mailController);
+
+///////////////////////////////////////////////
+
 app.post("/api/post/post", auth, function (req, res) {
   Index.find(
     ({},
@@ -155,6 +164,7 @@ app.get("/api/calendar/post", (req, res) => {
 });
 
 app.post("/api/calendar/post", auth, (req, res) => {
+  console.log(req.body);
   const Calbody = new CalPost({
     name: req.user.name,
     startDate: req.body.date,
@@ -434,15 +444,14 @@ app.post("/api/users/register", (req, res) => {
     return res.status(200).json({ registerSuccess: true });
   });
 });
-
+/*
 const mailController = require('./Email/Email');
 
 app.post("/api/users/register/email", mailController);
-
+*/
 app.post("/api/users/login", (req, res) => {
   console.log(req.body);
   User.findOne({ email: req.body.email }, (err, user) => {
-    console.log(user);
     //유저 없으면
     if (!user) {
       console.log("유저 없음");
